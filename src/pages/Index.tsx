@@ -1,37 +1,46 @@
 import AnimatedBackground from '@/components/AnimatedBackground';
 import FloatingLeaves from '@/components/FloatingLeaves';
-import Logo from '@/components/Logo';
-import SocialLinks from '@/components/SocialLinks';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import ProcessSection from '@/components/ProcessSection';
+import ContactsSection from '@/components/ContactsSection';
 
 const Index = () => {
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden">
       {/* SEO */}
-      <title>LUMĒRE — Свечи сделанные с любовью | by Ksenia</title>
-      <meta name="description" content="LUMĒRE — уникальные свечи ручной работы. Создаём атмосферу уюта и тепла в вашем доме. Свечи сделанные с любовью от Ксении." />
+      <title>LUMĒRE — Свечи ручной работы из гипса и кокосового воска | by Ksenia</title>
+      <meta name="description" content="LUMĒRE — уникальные свечи ручной работы из гипса и кокосового воска. Создаём атмосферу уюта и тепла в вашем доме. Ограниченные партии, индивидуальные заказы." />
       
-      {/* Animated Background */}
-      <AnimatedBackground />
+      {/* Fixed Background Elements */}
+      <div className="fixed inset-0 z-0">
+        <AnimatedBackground />
+        <FloatingLeaves />
+      </div>
       
-      {/* Floating Decorative Leaves */}
-      <FloatingLeaves />
+      {/* Navigation */}
+      <Navigation />
       
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center gap-12 md:gap-16 px-6 py-12">
-        {/* Logo */}
-        <Logo />
+      {/* Content */}
+      <div className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <ProcessSection />
+        <ContactsSection />
         
-        {/* Social Links */}
-        <SocialLinks />
-        
-        {/* Author Signature */}
-        <p className="mt-8 text-sm md:text-base tracking-[0.5em] text-muted-foreground/70 uppercase font-light">
-          by Ksenia
-        </p>
+        {/* Footer */}
+        <footer className="py-12 px-6 text-center border-t border-border/30">
+          <p className="text-sm text-muted-foreground">
+            © 2024 LUMĒRE by Ksenia. Все права защищены.
+          </p>
+        </footer>
       </div>
       
       {/* Subtle Vignette Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-5 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(0_52%_18%/0.4)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-5 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(0_100%_20%/0.5)_100%)]" />
     </main>
   );
 };
