@@ -184,3 +184,17 @@
     opacity: 1;
   }
 }
+
+@font-face {
+  font-family: 'Bruney';
+  src: url('/fonts/ss-bruney.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CormorantL';
+  src: url('/fonts/CormorantSC-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

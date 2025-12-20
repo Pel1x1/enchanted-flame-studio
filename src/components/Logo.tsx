@@ -1,10 +1,15 @@
 const Logo = () => {
   return (
     <div className="text-center animate-shimmer">
-      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-[0.3em] text-primary text-glow">
-        LUM<span className="relative">Ē<span className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-px bg-primary/60" /></span>RE
+      <h1
+      style={{fontFamily: "Bruney"}}
+      className="text-6xl sm:text-6xl md:text-7xl lg:text-[10.5rem] font-light tracking-[0.05em] text-primary text-glow"
+      >
+        Lum<span className="relative">e</span>re
       </h1>
-      <p className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl tracking-[0.4em] text-muted-foreground font-light uppercase">
+      <p 
+      style={{fontFamily: "CormorantL"}}
+      className="mt-0 text-[1rem] sm:text-xl md:text-2xl tracking-[0.4em] text-muted-foreground font-light">
         Свечи сделанные с любовью
       </p>
     </div>
