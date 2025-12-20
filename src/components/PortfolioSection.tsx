@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -26,14 +26,18 @@ const giftSets = [
 const PolaroidCard = ({ 
   children, 
   title, 
-  subtitle 
+  subtitle,
+  rotation = 0
 }: { 
   children: React.ReactNode; 
   title: string; 
   subtitle: string;
+  rotation?: number;
 }) => (
-  <div className="bg-foreground/95 p-3 pb-12 shadow-xl transform hover:rotate-0 transition-transform duration-300 hover:scale-105" 
-       style={{ transform: `rotate(${Math.random() * 4 - 2}deg)` }}>
+  <div 
+    className="bg-foreground/95 p-3 pb-14 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl relative flex-shrink-0 w-[280px] md:w-[300px]"
+    style={{ transform: `rotate(${rotation}deg)` }}
+  >
     <div className="aspect-square bg-muted/20 flex items-center justify-center overflow-hidden">
       {children}
     </div>
@@ -44,79 +48,94 @@ const PolaroidCard = ({
   </div>
 );
 
-const Slider = ({ 
+const TouchSlider = ({ 
   items, 
   renderItem 
 }: { 
-  items: any[]; 
-  renderItem: (item: any, index: number) => React.ReactNode;
+  items: { id: number; [key: string]: unknown }[]; 
+  renderItem: (item: { id: number; [key: string]: unknown }, index: number) => React.ReactNode;
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerView = 3;
-  const maxIndex = Math.max(0, items.length - itemsPerView);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const prev = () => setCurrentIndex((i) => Math.max(0, i - 1));
-  const next = () => setCurrentIndex((i) => Math.min(maxIndex, i + 1));
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 320;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
-        <div 
-          className="flex gap-6 transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
-        >
-          {items.map((item, index) => (
-            <div key={item.id} className="flex-shrink-0 w-full md:w-1/3 px-2">
-              {renderItem(item, index)}
-            </div>
-          ))}
-        </div>
+    <div className="relative group">
+      {/* Navigation Buttons */}
+      <Button 
+        variant="outline" 
+        size="icon" 
+        onClick={() => scroll('left')}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 border-foreground/30 text-foreground hover:bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex"
+      >
+        <ChevronLeft size={20} />
+      </Button>
+      <Button 
+        variant="outline" 
+        size="icon" 
+        onClick={() => scroll('right')}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 border-foreground/30 text-foreground hover:bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex"
+      >
+        <ChevronRight size={20} />
+      </Button>
+
+      {/* Scrollable Container */}
+      <div 
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide"
+        style={{ 
+          scrollbarWidth: 'none', 
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch'
+        }}
+      >
+        {items.map((item, index) => (
+          <div key={item.id} className="snap-center">
+            {renderItem(item, index)}
+          </div>
+        ))}
       </div>
-      
-      {items.length > itemsPerView && (
-        <div className="flex justify-center gap-4 mt-8">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={prev} 
-            disabled={currentIndex === 0}
-            className="border-foreground/30 text-foreground hover:bg-foreground/10"
-          >
-            <ChevronLeft size={20} />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={next} 
-            disabled={currentIndex >= maxIndex}
-            className="border-foreground/30 text-foreground hover:bg-foreground/10"
-          >
-            <ChevronRight size={20} />
-          </Button>
-        </div>
-      )}
+
+      {/* Scroll Indicator for Mobile */}
+      <div className="flex justify-center gap-2 mt-4 md:hidden">
+        <span className="text-foreground/50 text-sm">← Листайте →</span>
+      </div>
     </div>
   );
 };
 
 const PortfolioSection = () => {
+  const rotations = [-2, 1, -1, 2, -1.5];
+
   return (
-    <section id="portfolio" className="relative py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="portfolio" className="relative py-24">
+      <div className="max-w-full mx-auto">
         {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl font-light text-center mb-16 tracking-[0.3em] uppercase text-foreground">
+        <h2 className="text-3xl md:text-4xl font-light text-center mb-16 tracking-[0.3em] uppercase text-foreground px-6">
           Портфолио
         </h2>
         
         {/* Candles */}
         <div className="mb-20">
-          <h3 className="text-2xl font-light text-center mb-10 tracking-[0.2em] text-foreground/90">
+          <h3 className="text-2xl font-light text-center mb-10 tracking-[0.2em] text-foreground/90 px-6">
             Свечи
           </h3>
-          <Slider 
+          <TouchSlider 
             items={candles}
-            renderItem={(candle) => (
-              <PolaroidCard title={candle.name} subtitle={`${candle.volume} • ${candle.description}`}>
+            renderItem={(candle, index) => (
+              <PolaroidCard 
+                title={candle.name as string} 
+                subtitle={`${candle.volume} • ${candle.description}`}
+                rotation={rotations[index % rotations.length]}
+              >
                 <div className="w-full h-full bg-gradient-to-br from-secondary/40 to-muted/60 flex items-center justify-center">
                   <span className="text-4xl">🕯️</span>
                 </div>
@@ -127,17 +146,21 @@ const PortfolioSection = () => {
         
         {/* Aroma Sachets */}
         <div className="mb-20">
-          <h3 className="text-2xl font-light text-center mb-4 tracking-[0.2em] text-foreground/90">
+          <h3 className="text-2xl font-light text-center mb-4 tracking-[0.2em] text-foreground/90 px-6">
             Аромасаше
           </h3>
-          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto px-6">
             Ароматические саше для шкафа, комода или рабочего стола — продолжение эстетики свечей LUMĒRE. 
             Наполнят ваше пространство уютом и изысканным ароматом.
           </p>
-          <Slider 
+          <TouchSlider 
             items={sachets}
-            renderItem={(sachet) => (
-              <PolaroidCard title={sachet.name} subtitle={sachet.description}>
+            renderItem={(sachet, index) => (
+              <PolaroidCard 
+                title={sachet.name as string} 
+                subtitle={sachet.description as string}
+                rotation={rotations[index % rotations.length]}
+              >
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-muted/40 flex items-center justify-center">
                   <span className="text-4xl">🌿</span>
                 </div>
@@ -148,17 +171,21 @@ const PortfolioSection = () => {
         
         {/* Gift Sets */}
         <div>
-          <h3 className="text-2xl font-light text-center mb-4 tracking-[0.2em] text-foreground/90">
+          <h3 className="text-2xl font-light text-center mb-4 tracking-[0.2em] text-foreground/90 px-6">
             Подарочные наборы
           </h3>
-          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto px-6">
             Готовые подарки для особых случаев — день рождения, Новый год, юбилей. 
             Красивая упаковка и продуманная композиция.
           </p>
-          <Slider 
+          <TouchSlider 
             items={giftSets}
-            renderItem={(set) => (
-              <PolaroidCard title={set.name} subtitle={set.description}>
+            renderItem={(set, index) => (
+              <PolaroidCard 
+                title={set.name as string} 
+                subtitle={set.description as string}
+                rotation={rotations[index % rotations.length]}
+              >
                 <div className="w-full h-full bg-gradient-to-br from-secondary/30 to-accent/20 flex items-center justify-center">
                   <span className="text-4xl">🎁</span>
                 </div>
