@@ -7,30 +7,50 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-12">
-      {/* Logo */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pb-12 mt-[-1rem] text-[#660000] z-10">
+      {/* Центрированное изображение */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src="/img/Frame 40.png"        // положи файл в public/Frame 40.png
+          alt="LUMĒRE frame"
+          width={400}
+          height={400}
+          className="object-contain max-w-full max-h-full"
+        />
+      </div>
+
       <Logo />
-      
-      {/* Hero Text */}
-      <p className="mt-8 max-w-2xl text-center text-lg md:text-xl text-foreground/80 leading-relaxed font-light tracking-wide">
-        LUMĒRE — свечи ручной работы из гипса и кокосового воска. 
-        <br className="hidden md:block" />
-        Каждая свеча как маленькое произведение искусства.
-      </p>
-      
-      {/* Author Signature */}
-      <p className="mt-6 text-sm md:text-base tracking-[0.5em] text-muted-foreground/70 uppercase font-light">
-        by Ksenia
-      </p>
-      
-      {/* Scroll Indicator */}
-      <button 
-        onClick={scrollToAbout}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce text-foreground/50 hover:text-foreground transition-colors"
-        aria-label="Scroll down"
-      >
-        <ChevronDown size={32} />
-      </button>
+
+      {/* Блок соцсетей + текст */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center gap-6">
+          <button onClick={scrollToAbout} aria-label="WhatsApp">
+            <img
+              src="/img/whatsapp.png"
+              alt="WhatsApp"
+              className="w-8 h-8 md:w-10 md:h-10"
+            />
+          </button>
+          <button onClick={scrollToAbout} aria-label="Telegram">
+            <img
+              src="/img/telegram.png"
+              alt="Telegram"
+              className="w-8 h-8 md:w-10 md:h-10"
+            />
+          </button>
+          <button onClick={scrollToAbout} aria-label="Instagram">
+            <img
+              src="/img/instagram.png"
+              alt="Instagram"
+              className="w-8 h-8 md:w-10 md:h-10"
+            />
+          </button>
+        </div>
+
+        <p className="text-xs md:text-sm tracking-[0.3em] text-[#FFF6DB]" style={{fontFamily: "CormorantL", }}>
+          Для заказа
+        </p>
+      </div>
     </section>
   );
 };

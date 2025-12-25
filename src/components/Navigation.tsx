@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'О бренде', href: '#about' },
   { label: 'Портфолио', href: '#portfolio' },
   { label: 'Процесс', href: '#process' },
+  { label: 'Доставка', href: '#delivery' },
   { label: 'Контакты', href: '#contacts' },
+
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,67 +21,65 @@ const Navigation = () => {
   }, []);
 
   const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}
-    >
+    <nav
+  className={`w-full transition-all duration-300 z-100 ${
+    isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+  }`}
+>
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a 
-            href="#" 
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="text-xl font-light tracking-[0.3em] text-foreground hover:text-accent transition-colors"
-          >
-            LUMĒRE
-          </a>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-sm tracking-widest text-foreground/80 hover:text-foreground transition-colors uppercase"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-        
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-sm border-t border-border/30 shadow-lg">
-            <div className="flex flex-col py-4">
+          {/* Десктоп: лого + горизонтальное меню */}
+          <div className="hidden md:flex items-center justify-between w-full">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="text-xl font-light tracking-[0.3em] text-foreground hover:text-accent transition-colors"
+            >
+              LUMĒRE
+            </a>
+
+            <div className="flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className="px-6 py-4 text-sm tracking-widest text-foreground/80 hover:text-foreground hover:bg-secondary/20 transition-colors uppercase text-left"
+                  className="text-sm tracking-widest text-foreground/80 hover:text-foreground transition-colors uppercase"
                 >
                   {item.label}
                 </button>
               ))}
             </div>
           </div>
-        )}
+
+          {/* Мобилка: просто центрированные ссылки в одной строке */}
+          <div className="flex md:hidden w-full justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-[5rem]">
+              {navItems.map((item, index) => (
+                <>
+                  <button
+                    key={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    style={{fontFamily: "CormorantL", }}
+                    className="text-[1rem] text-[#FFF6DB] tracking-[0.1rem] hover:text-foreground transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </button>
+
+                  {/* После третьего элемента вставляем «разрыв строки» */}
+                  {index === 2 && <span key="break" className="w-full h-0" />}
+                </>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );
