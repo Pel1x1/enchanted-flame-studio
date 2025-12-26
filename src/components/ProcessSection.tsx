@@ -54,7 +54,6 @@ const ProcessSection = () => {
     >
       <div className="relative w-full bg-[#EFDEC0]">
         {/* Большой круг сверху */}
-        <div className="absolute -top-[49vw] md:-top-[30vw] lg:-top-[20vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#EFDEC0]" />
         <div className="absolute -top-[49vw] md:-top-[30vw] lg:-top-[20vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-full bg-[#EFDEC0]" /> 
 
         {/* Контент поверх круга */}
@@ -73,31 +72,33 @@ const ProcessSection = () => {
 
           {/* Мобильная версия */}
           <div className="md:hidden">
-            <div className="relative z-20 flex justify-center gap-1.5 overflow-x-auto no-scrollbar">
-              {processSteps.map((step) => (
-                <button
-                  key={step.id}
-                  style={{ fontFamily: 'Bruney' }}
-                  onClick={() => setActiveStep(step.id)}
-                  className={`
-                    w-8 h-9 rounded-lg text-[1.3rem] flex-shrink-0
-                    transition-all duration-300
-                    bg-[#660000] text-[#EFDEC0]
-                    ${activeStep === step.id
-                      ? "relative z-30 -mb-2"
-                      : "relative z-20"
-                    }
-                  `}
-                >
-                  {activeStep === step.id && (
-                    <span className="absolute left-0 right-0 -bottom-[30px] h-[40px] bg-[#660000]" />
-                  )}
-                  {String(step.id).padStart(2, "0")}
-                </button>
-              ))}
-            </div>
+              
+            <div className="relative overflow-x-auto no-scrollbar mb-0 h-[64px]">
+              <div className="flex justify-center gap-1.5 items-start h-full">
+                {processSteps.map((step) => {
+                  const isActive = activeStep === step.id;
 
-            <div className="relative z-10 bg-[#660000] rounded-[1.5rem] p-5 mx-2 h-[380px]">
+                  return (
+                    <button
+                      key={step.id}
+                      style={{ fontFamily: "Bruney" }}
+                      onClick={() => setActiveStep(step.id)}
+                      className={[
+                        "relative w-8 flex-shrink-0 rounded-lg text-[1.3rem]",
+                        "bg-[#660000] text-[#EFDEC0]",
+                        "transition-all duration-300", // можно заменить на transition-[height]
+                        "flex items-start justify-center pt-1",
+                        isActive ? "h-[64px] rounded-b-none z-20" : "h-9 z-10",
+                      ].join(" ")}
+                    >
+                      {String(step.id).padStart(2, "0")}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            
+            <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 mx-2 -mt-4 h-[380px]">
               <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
                 <img src='/img/flower.png' alt="" className="rotate-[220deg]" />
               </div>
@@ -184,7 +185,8 @@ const ProcessSection = () => {
             </p>
           </div>
 
-          <div className="absolute -z-10 top-[30vw] md:top-[20vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-[100%] bg-[#EFDEC0]" /> 
+          <div className="absolute -z-10 top-[30vw] md:-top-[30vw] lg:-top-[20vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-full bg-[#EFDEC0]" /> 
+    
         </div>
       </div>
     </section>
