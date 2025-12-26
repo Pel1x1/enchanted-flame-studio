@@ -43,7 +43,7 @@ const blogLinks = [
 
 const ContactsSection = () => {
   return (
-    <section id="contacts" className="relative py-24 px-6">
+    <section id="contacts" className="relative py-24 px-6 ">
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Title */}
         <h2 className="text-3xl md:text-4xl font-light mb-6 tracking-[0.3em] uppercase text-foreground">

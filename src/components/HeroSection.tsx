@@ -7,14 +7,14 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pb-12 text-[#660000] z-10">
+    <section className="relative min-h-screen mt-[-2rem] flex flex-col items-center justify-center px-6 pb-12 text-[#660000] z-10">
       {/* Центрированное изображение */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <img
           src="/img/Frame 40.png"        // положи файл в public/Frame 40.png
           alt="LUMĒRE frame"
-          width={400}
-          height={400}
+          width={372}
+          height={532}  
           className="object-contain max-w-full max-h-full"
         />
       </div>

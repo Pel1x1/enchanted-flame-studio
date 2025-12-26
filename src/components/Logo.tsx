@@ -3,7 +3,7 @@ const Logo = () => {
     <div className="relative flex flex-col items-center text-center animate-shimmer min-h-full ">
       <h1
         style={{ fontFamily: 'Bruney' }}
-        className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[10.5rem] 
+        className="text-[52px] sm:text-6xl md:text-7xl lg:text-[10.5rem] 
         font-light tracking-[0.05em] text-[#660000] text-glow
         mt-[5rem]
         "
@@ -13,7 +13,7 @@ const Logo = () => {
 
       <p 
       style={{fontFamily: "CormorantL", }}
-      className="mt-8 max-w-2xl mx-auto text-center text-[1.25rem] md:text-xl leading-relaxed font-light tracking-wide text-[#660000]">
+      className="mt-8 max-w-2xl mx-auto text-center text-[14.43px] md:text-xl leading-relaxed font-light tracking-wide text-[#660000]">
         Cвечи ручной работы из<br /> гипса и кокосового воска.<br />
         Каждая свеча как маленькое<br /> произведение искусства.
       </p>
