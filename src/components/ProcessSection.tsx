@@ -73,15 +73,15 @@ const ProcessSection = () => {
 
           {/* Мобильная версия */}
           <div className="md:hidden">
-            <div className="relative z-20 flex justify-center gap-2.5 flex-wrap">
+            <div className="relative z-20 flex justify-center gap-1.5 overflow-x-auto no-scrollbar">
               {processSteps.map((step) => (
                 <button
                   key={step.id}
                   style={{ fontFamily: 'Bruney' }}
                   onClick={() => setActiveStep(step.id)}
                   className={`
-                    w-8 h-9 rounded-lg text-[1.5rem] mb-2
-                    transition-all duration-300 flex-shrink-0
+                    w-8 h-9 rounded-lg text-[1.3rem] flex-shrink-0
+                    transition-all duration-300
                     bg-[#660000] text-[#EFDEC0]
                     ${activeStep === step.id
                       ? "relative z-30 -mb-2"
@@ -126,40 +126,44 @@ const ProcessSection = () => {
             </div>
           </div>
 
-          {/* Десктопная версия - сетка шагов */}
+          {/* Десктопная версия - сетка шагов с фото плейсхолдерами */}
           <div className="hidden md:block">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {processSteps.map((step) => (
-                <button
+                <div
                   key={step.id}
-                  onClick={() => setActiveStep(step.id)}
-                  className={`
-                    relative p-6 lg:p-8 rounded-2xl transition-all duration-300
-                    ${activeStep === step.id
-                      ? "bg-[#660000] text-[#EFDEC0] scale-105 shadow-lg"
-                      : "bg-transparent border-2 border-[#660000] text-[#660000] hover:bg-[#660000]/10"
-                    }
-                  `}
+                  className="relative bg-[#660000] text-[#EFDEC0] rounded-2xl overflow-hidden"
                 >
-                  <div 
-                    style={{ fontFamily: 'Bruney' }}
-                    className="text-3xl lg:text-4xl mb-3"
-                  >
-                    {String(step.id).padStart(2, "0")}
+                  {/* Фото плейсхолдер */}
+                  <div className="w-full aspect-[4/3] bg-[#4a0000] flex items-center justify-center">
+                    <div className="text-center text-[#EFDEC0]/60">
+                      <div className="text-4xl mb-2">📷</div>
+                      <p style={{ fontFamily: 'CormorantL' }} className="text-sm">Фото этапа {String(step.id).padStart(2, "0")}</p>
+                    </div>
                   </div>
-                  <h3 
-                    style={{ fontFamily: 'CormorantB' }}
-                    className="text-lg lg:text-xl mb-2"
-                  >
-                    {step.title}
-                  </h3>
-                  <p 
-                    style={{ fontFamily: 'CormorantL' }}
-                    className="text-sm lg:text-base leading-relaxed opacity-90"
-                  >
-                    {step.description}
-                  </p>
-                </button>
+                  
+                  {/* Контент карточки */}
+                  <div className="p-5 lg:p-6">
+                    <div 
+                      style={{ fontFamily: 'Bruney' }}
+                      className="text-2xl lg:text-3xl mb-2"
+                    >
+                      {String(step.id).padStart(2, "0")}
+                    </div>
+                    <h3 
+                      style={{ fontFamily: 'CormorantB' }}
+                      className="text-lg lg:text-xl mb-2"
+                    >
+                      {step.title}
+                    </h3>
+                    <p 
+                      style={{ fontFamily: 'CormorantL' }}
+                      className="text-sm lg:text-base leading-relaxed opacity-90"
+                    >
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

@@ -116,68 +116,66 @@ const AboutSection = () => {
             </div>
 
             {/* Десктопная версия - горизонтальный layout */}
-            <div className="hidden md:grid md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16">
-              {/* Блок 1: Ручная работа */}
-              <div className="relative text-center p-6 lg:p-8">
-                <div className="absolute -left-8 -top-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
-                  <img src='/img/flower.png' alt="" />
-                </div>
-                <div className="relative z-10">
+            <div className="hidden md:flex md:items-start md:justify-between gap-4 lg:gap-8">
+              {/* Левый цветок */}
+              <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -ml-4 lg:-ml-8">
+                <img src='/img/flower.png' alt="" className="w-full opacity-70" />
+              </div>
+
+              {/* 3 колонки текста */}
+              <div className="flex-1 grid grid-cols-3 gap-6 lg:gap-10 xl:gap-14">
+                {/* Блок 1: Ручная работа */}
+                <div className="text-center">
                   <h3
                     style={{ fontFamily: 'CormorantB' }}
-                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4 text-[#7B0F16]"
                   >
                     Ручная работа
                   </h3>
                   <p
                     style={{ fontFamily: 'CormorantL' }}
-                    className="text-base lg:text-lg leading-[1.6]"
+                    className="text-base lg:text-lg leading-[1.6] text-[#7B0F16]"
                   >
                     Каждое изделие создаётся вручную с любовью и вниманием к деталям
                   </p>
                 </div>
-              </div>
 
-              {/* Блок 2: Ограниченные партии */}
-              <div className="relative text-center p-6 lg:p-8">
-                <div className="absolute -right-8 -top-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
-                  <img src='/img/flower.png' alt="" className="rotate-[210deg]" />
-                </div>
-                <div className="relative z-10">
+                {/* Блок 2: Ограниченные партии */}
+                <div className="text-center">
                   <h3
                     style={{ fontFamily: 'CormorantB' }}
-                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4 text-[#7B0F16]"
                   >
                     Ограниченные партии
                   </h3>
                   <p
                     style={{ fontFamily: 'CormorantL' }}
-                    className="text-base lg:text-lg leading-[1.6]"
+                    className="text-base lg:text-lg leading-[1.6] text-[#7B0F16]"
                   >
                     Небольшие тиражи гарантируют уникальность каждого изделия
                   </p>
                 </div>
-              </div>
 
-              {/* Блок 3: Натуральные материалы */}
-              <div className="relative text-center p-6 lg:p-8">
-                <div className="absolute -left-8 -bottom-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
-                  <img src='/img/flower.png' alt="" className="rotate-[-75deg]" />
-                </div>
-                <div className="relative z-10">
+                {/* Блок 3: Натуральные материалы */}
+                <div className="text-center">
                   <h3
                     style={{ fontFamily: 'CormorantB' }}
-                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4 text-[#7B0F16]"
                   >
                     Натуральные материалы
                   </h3>
                   <p
                     style={{ fontFamily: 'CormorantL' }}
-                    className="text-base lg:text-lg leading-[1.6]"
+                    className="text-base lg:text-lg leading-[1.6] text-[#7B0F16]"
                   >
                     Кокосовый воск и качественный гипс для безопасного горения
                   </p>
                 </div>
+              </div>
+
+              {/* Правый цветок */}
+              <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -mr-4 lg:-mr-8">
+                <img src='/img/flower.png' alt="" className="w-full opacity-70 rotate-180" />
               </div>
             </div>
           </div>
