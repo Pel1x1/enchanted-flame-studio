@@ -7,7 +7,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pb-12 mt-[-1rem] text-[#660000] z-10">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pb-12 text-[#660000] z-10">
       {/* Центрированное изображение */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <img
@@ -28,26 +28,26 @@ const HeroSection = () => {
             <img
               src="/img/whatsapp.png"
               alt="WhatsApp"
-              className="w-8 h-8 md:w-10 md:h-10"
+              className="w-10 h-10 md:w-10 md:h-10"
             />
           </button>
           <button onClick={scrollToAbout} aria-label="Telegram">
             <img
               src="/img/telegram.png"
               alt="Telegram"
-              className="w-8 h-8 md:w-10 md:h-10"
+              className="w-8=10 h-10 md:w-10 md:h-10"
             />
           </button>
           <button onClick={scrollToAbout} aria-label="Instagram">
             <img
               src="/img/instagram.png"
               alt="Instagram"
-              className="w-8 h-8 md:w-10 md:h-10"
+              className="w-10 h-10 md:w-10 md:h-10"
             />
           </button>
         </div>
 
-        <p className="text-xs md:text-sm tracking-[0.3em] text-[#FFF6DB]" style={{fontFamily: "CormorantL", }}>
+        <p className="text-sm md:text-sm tracking-[0.3em] text-[#FFF6DB]" style={{fontFamily: "CormorantL", }}>
           Для заказа
         </p>
       </div>

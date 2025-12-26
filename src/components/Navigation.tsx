@@ -26,8 +26,8 @@ const Navigation = () => {
   };
 
   return (
-    <nav
-  className={`w-full transition-all duration-300 z-100 ${
+<nav
+  className={`absolute top-0 left-0 right-0 transition-all duration-300 z-50 ${
     isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
   }`}
 >
