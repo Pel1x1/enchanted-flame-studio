@@ -13,7 +13,7 @@ const HeroSection = () => {
         <img
           src="/img/Frame 40.png"
           alt="LUMĒRE frame"
-          className="object-contain max-w-full max-h-full w-[372px] md:w-[500px] lg:w-[600px] xl:w-[700px] lg:rotate-90"
+          className="object-contain max-w-full  w-[372px] md:w-[500px] lg:w-[600px] xl:w-[600px] lg:rotate-90"
         />
       </div>
 

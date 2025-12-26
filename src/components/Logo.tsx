@@ -3,7 +3,7 @@ const Logo = () => {
     <div className="relative flex flex-col items-center text-center animate-shimmer min-h-full">
       <h1
         style={{ fontFamily: 'Bruney' }}
-        className="text-[52px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10.5rem] 
+        className="text-[52px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem]
         font-light tracking-[0.05em] text-[#660000] text-glow
         mt-[5rem] md:mt-[6rem] lg:mt-[8rem]"
       >
@@ -12,7 +12,7 @@ const Logo = () => {
 
       <p 
         style={{fontFamily: "CormorantL"}}
-        className="mt-6 md:mt-8 lg:mt-10 max-w-2xl mx-auto text-center text-[14.43px] md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-light tracking-wide text-[#660000]"
+        className="mt-6 md:mt-8 lg:mt-10 max-w-2xl mx-auto text-center text-[14.43px] lg:text-lg xl:text-xl leading-relaxed font-light tracking-wide text-[#660000]"
       >
         <span className="md:hidden">
           Cвечи ручной работы из<br /> гипса и кокосового воска.<br />
