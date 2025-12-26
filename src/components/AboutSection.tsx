@@ -1,5 +1,3 @@
-import { Sparkles, Heart, Leaf } from 'lucide-react';
-
 const AboutSection = () => {
   return (
     <section
@@ -9,15 +7,15 @@ const AboutSection = () => {
       {/* Внутренняя «бумага» как на макете */}
       <div className="relative w-full bg-[#F5E2C6] pb-5">
         {/* Большой круг сверху */}
-        <div className="absolute -top-[55vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#F5E2C6]" />
+        <div className="absolute -top-[55vw] md:-top-[35vw] lg:-top-[25vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#F5E2C6]" />
           
         {/* Контент поверх круга */}
-        <div className="relative px-[44px] pt-24 ">
+        <div className="relative px-[44px] md:px-16 lg:px-24 xl:px-32 pt-24 max-w-7xl mx-auto">
           {/* Заголовок ABOUT THE BRAND */}
-          <div className="text-center mb-10 mt-[-15rem]">
+          <div className="text-center mb-10 md:mb-16 mt-[-15rem] md:mt-[-12rem] lg:mt-[-10rem]">
             <h2
               style={{ fontFamily: 'Bruney' }}
-              className="text-[2.5rem] leading-tight text-[#660000]"
+              className="text-[2.5rem] md:text-5xl lg:text-6xl leading-tight text-[#660000]"
             >
               about the
               <br />
@@ -27,8 +25,8 @@ const AboutSection = () => {
 
           {/* Основной текст (3 абзаца) */}
           <div
-            style={{ fontFamily: 'CormorantL', }}
-            className="text-[14.43px] leading-[1.5] text-[#7B0F16] space-y-4 text-justify"
+            style={{ fontFamily: 'CormorantL' }}
+            className="text-[14.43px] md:text-lg lg:text-xl leading-[1.5] md:leading-[1.7] text-[#7B0F16] space-y-4 md:space-y-6 text-justify md:text-center max-w-4xl mx-auto"
           >
             <p>
               Каждая свеча — это маленькая история, созданная теплом рук и вниманием к деталям.
@@ -48,85 +46,142 @@ const AboutSection = () => {
             <br/>
           </div>
 
-          {/* Блоки с преимуществами и местами под цветы */}
-          <div className="mt-10 space-y-10 text-[#7B0F16]">
-            {/* Блок 1: Ручная работа */}
-            <div className="relative ">
-              {/* ЛЕВЫЙ ЦВЕТОК */}
-              <div className="absolute -left-[135px] -top-[70px] w-[240px] h-[240px] pointer-events-none">
-                <img src='/img/flower.png' className=''/>
+          {/* Блоки с преимуществами - мобилка вертикально, десктоп горизонтально */}
+          <div className="mt-10 md:mt-16 lg:mt-20 text-[#7B0F16]">
+            {/* Мобильная версия - вертикальный layout */}
+            <div className="md:hidden space-y-10">
+              {/* Блок 1: Ручная работа */}
+              <div className="relative">
+                <div className="absolute -left-[135px] -top-[70px] w-[240px] h-[240px] pointer-events-none">
+                  <img src='/img/flower.png' alt="" />
+                </div>
+                <div className="ml-[110px] pr-0">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-[14.43px] bold mb-2"
+                  >
+                    Ручная работа
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-[14.43px] leading-[1.5] text-justify"
+                  >
+                    Каждое изделие создаётся вручную с любовью и вниманием к деталям
+                  </p>
+                  <br/>
+                </div>
               </div>
 
-              <div className="ml-[110px] pr-0">
-                <h3
-                  style={{ fontFamily: 'CormorantB' }}
-                  className="text-[14.43px] bold mb-2"
-                >
-                  Ручная работа
-                </h3>
-                <p
-                  style={{ fontFamily: 'CormorantL' }}
-                  className="text-[14.43px] leading-[1.5] text-justify"
-                >
-                  Каждое изделие создаётся вручную с любовью и вниманием к деталям
-                </p>
-                <br/>
+              {/* Блок 2: Ограниченные партии */}
+              <div className="relative py-[1rem]">
+                <div className="absolute -right-[8rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
+                  <img src='/img/flower.png' alt="" className="rotate-[210deg]" />
+                </div>
+                <div className="pr-[60px]">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-[14.43px] bold mb-2"
+                  >
+                    Ограниченные партии
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-[14.43px] leading-[1.5]"
+                  >
+                    Небольшие тиражи гарантируют <br/> уникальность каждого изделия
+                  </p>
+                </div>
+              </div>
+
+              {/* Блок 3: Натуральные материалы */}
+              <div className="relative">
+                <div className="absolute -left-[7rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
+                  <img src='/img/flower.png' alt="" className="rotate-[-75deg]" />
+                </div>
+                <div className="ml-[110px]">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-[14.43px] bold mb-2"
+                  >
+                    Натуральные материалы
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-[14.43px] leading-[1.5]"
+                  >
+                    Кокосовый воск и качественный гипс для безопасного горения
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Блок 2: Ограниченные партии */}
-            <div className="relative py-[1rem]">
-              {/* ПРАВЫЙ ЦВЕТОК */}
-              <div className="absolute -right-[8rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
-                <img src='/img/flower.png'
-                className="rotate-[210deg]"
-                />
+            {/* Десктопная версия - горизонтальный layout */}
+            <div className="hidden md:grid md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16">
+              {/* Блок 1: Ручная работа */}
+              <div className="relative text-center p-6 lg:p-8">
+                <div className="absolute -left-8 -top-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
+                  <img src='/img/flower.png' alt="" />
+                </div>
+                <div className="relative z-10">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                  >
+                    Ручная работа
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-base lg:text-lg leading-[1.6]"
+                  >
+                    Каждое изделие создаётся вручную с любовью и вниманием к деталям
+                  </p>
+                </div>
               </div>
 
-              <div className="pr-[60px]">
-                <h3
-                  style={{ fontFamily: 'CormorantB' }}
-                  className="text-[14.43px] bold mb-2"
-                >
-                  Ограниченные партии
-                </h3>
-                <p
-                  style={{ fontFamily: 'CormorantL' }}
-                  className="text-[14.43px] leading-[1.5] "
-                >
-                  Небольшие тиражи гарантируют <br/> уникальность каждого изделия
-                </p>
-                
-              </div>
-            </div>
-
-            {/* Блок 3: Натуральные материалы */}
-            <div className="relative">
-              {/* ЛЕВЫЙ НИЖНИЙ ЦВЕТОК */}
-              <div className="absolute -left-[7rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
-                <img src='/img/flower.png'
-                className="rotate-[-75deg]"
-                />
+              {/* Блок 2: Ограниченные партии */}
+              <div className="relative text-center p-6 lg:p-8">
+                <div className="absolute -right-8 -top-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
+                  <img src='/img/flower.png' alt="" className="rotate-[210deg]" />
+                </div>
+                <div className="relative z-10">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                  >
+                    Ограниченные партии
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-base lg:text-lg leading-[1.6]"
+                  >
+                    Небольшие тиражи гарантируют уникальность каждого изделия
+                  </p>
+                </div>
               </div>
 
-              <div className="ml-[110px]">
-                <h3
-                  style={{ fontFamily: 'CormorantB' }}
-                  className="text-[14.43px] bold mb-2"
-                >
-                  Натуральные материалы
-                </h3>
-                <p
-                  style={{ fontFamily: 'CormorantL' }}
-                  className="text-[14.43px] leading-[1.5]"
-                >
-                  Кокосовый воск и качественный гипс для безопасного горения
-                </p>
+              {/* Блок 3: Натуральные материалы */}
+              <div className="relative text-center p-6 lg:p-8">
+                <div className="absolute -left-8 -bottom-8 w-[180px] lg:w-[220px] h-[180px] lg:h-[220px] pointer-events-none opacity-60">
+                  <img src='/img/flower.png' alt="" className="rotate-[-75deg]" />
+                </div>
+                <div className="relative z-10">
+                  <h3
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-lg lg:text-xl xl:text-2xl mb-3 lg:mb-4"
+                  >
+                    Натуральные материалы
+                  </h3>
+                  <p
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-base lg:text-lg leading-[1.6]"
+                  >
+                    Кокосовый воск и качественный гипс для безопасного горения
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10">
         <HeroSection />
-        <div className='h-[250px]'></div>
+        <div className='h-[250px] md:h-[300px] lg:h-[350px]'></div>
         <AboutSection />
         <PortfolioSection />
         <ProcessSection />
@@ -35,16 +35,16 @@ const Index = () => {
         <ContactsSection />
         
         {/* Footer */}
-        <footer className="bg-[#660000] px-4 py-1">
+        <footer className="bg-[#660000] px-4 md:px-8 py-2 md:py-4">
           <div
             style={{ fontFamily: "CormorantL" }}
-            className="grid grid-cols-2 place-items-center text-[10px] text-[#FFF6DB]"
+            className="flex justify-center items-center gap-8 md:gap-16 lg:gap-24 text-[10px] md:text-sm lg:text-base text-[#FFF6DB]"
           >
             <a
-              href="https://t.me/weksirtu" // <-- замени
+              href="https://t.me/weksirtu"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-center hover:underline ml-[5rem]"
+              className="text-center hover:underline transition-opacity hover:opacity-80"
             > 
               Design by Ksenia
             </a>
@@ -53,7 +53,7 @@ const Index = () => {
               href="https://pel1x1.ru"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-center hover:underline mr-[5rem]"
+              className="text-center hover:underline transition-opacity hover:opacity-80"
             >
               Made by K&amp;K
             </a>
