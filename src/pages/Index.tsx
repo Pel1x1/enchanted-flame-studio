@@ -35,10 +35,29 @@ const Index = () => {
         <ContactsSection />
         
         {/* Footer */}
-        <footer className="py-12 px-6 text-center border-t border-border/30">
-          <p className="text-sm text-muted-foreground">
-            © 2024 LUMĒRE by Ksenia. Все права защищены.
-          </p>
+        <footer className="bg-[#660000] px-4 py-1">
+          <div
+            style={{ fontFamily: "CormorantL" }}
+            className="grid grid-cols-2 place-items-center text-[10px] text-[#FFF6DB]"
+          >
+            <a
+              href="https://t.me/weksirtu" // <-- замени
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center hover:underline ml-[5rem]"
+            > 
+              Design by Ksenia
+            </a>
+
+            <a
+              href="https://pel1x1.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center hover:underline mr-[5rem]"
+            >
+              Made by K&amp;K
+            </a>
+          </div>
         </footer>
       </div>
       

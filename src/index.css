@@ -213,3 +213,11 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'CormorantR';
+  src: url('/fonts/CormorantSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+

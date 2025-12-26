@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 
 const DeliverySection = () => {
   return (
-    <section id="contacts" className="relative py-24 px-[43.68px] ">
+    <section id="contacts" className="relative py-24 px-[43.68px] border-solid border-[#FFF6DB]">
       <div className=" text-center">
         <div className="text-center mb-8 mt-[6rem]">
             <h2
@@ -14,7 +14,7 @@ const DeliverySection = () => {
               delivery
             </h2>
 
-            <p style={{ fontFamily: 'CormorantL' }} className='text-left mt-8 text-[14.43px] tacking-[1px] text-justify'>
+            <p style={{ fontFamily: 'CormorantL' }} className='mt-8 text-[14.43px] tacking-[1px] text-justify'>
 
                 <span  style={{ fontFamily: 'CormorantB' }}>Доставка</span>
                 <br/><br/>

@@ -50,7 +50,7 @@ const PortfolioSection = () => {
               text: ''
             },
           ]}
-          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.01} font='30px CormorantL '/>
+          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.5} font='30px CormorantL '/>
         </div>
       </div>
       
@@ -128,7 +128,7 @@ const PortfolioSection = () => {
             },
 
           ]}
-          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.01} font='30px CormorantL '/>
+          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.5} font='30px CormorantL '/>
         </div>
         <p 
           style={{ fontFamily: 'CormorantL', }}
@@ -168,7 +168,7 @@ const PortfolioSection = () => {
               text: ''
             },
           ]}
-          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.01} font='30px CormorantL '/>
+          bend={-1} textColor="#660000" borderRadius={0} scrollEase={0.5} font='30px CormorantL '/>
         </div>
         <p 
           style={{ fontFamily: 'CormorantL', }}

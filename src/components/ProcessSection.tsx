@@ -98,7 +98,7 @@ const ProcessSection = () => {
           ))}
         </div>
 
-        <div className="relative z-10 bg-[#660000] rounded-[1.5rem] p-5 mx-2">
+        <div className="relative z-10 bg-[#660000] rounded-[1.5rem] p-5 mx-2 h-[380px]">
           <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
             <img src='/img/flower.png'
             className="rotate-[220deg]"
@@ -120,9 +120,9 @@ const ProcessSection = () => {
             </div>
 
             {/* Image placeholder */}
-            <div className="w-full aspect-[4/3] rounded-xl bg-card/20 flex items-center justify-center mb-0 overflow-hidden">
-              <div className="text-center text-primary-foreground/60">
-                <div className="text-3xl mb-1">📷</div>
+            <div className="w-full aspect-[4/3] rounded-xl bg-card/20 flex items-center justify-center mb-0 overflow-hidden z-0">
+              <div className="text-center text-primary-foreground/60 z-0">
+                <div className="text-3xl mb-1 z-0">📷</div>
                 <p className="text-xs">Фото этапа {String(activeStep).padStart(2, "0")}</p>
               </div>
             </div>
