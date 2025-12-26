@@ -19,7 +19,7 @@ const ContactsSection = () => {
         alt=""
         className="pointer-events-none select-none absolute 
         top-[-7.5rem] left-[-7rem] md:top-[-10rem] md:left-[-8rem] lg:top-[-12rem] lg:left-[-10rem]
-        z-0 w-[290px] h-[290px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rotate-[-75deg]"
+        z-50 w-[290px] h-[290px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rotate-[-75deg]"
       />
       
       <img
@@ -27,7 +27,7 @@ const ContactsSection = () => {
         alt=""
         className="pointer-events-none select-none absolute 
         top-[-6.8rem] right-[-6.5rem] md:top-[-10rem] md:right-[-8rem] lg:top-[-12rem] lg:right-[-10rem]
-        z-0 w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rotate-[180deg]"
+        z-50 w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rotate-[180deg]"
       />
       
       <img
@@ -35,7 +35,7 @@ const ContactsSection = () => {
         alt=""
         className="pointer-events-none select-none absolute 
         bottom-[-4.5rem] left-[-3.8rem] md:bottom-[-6rem] md:left-[-5rem] lg:bottom-[-8rem] lg:left-[-6rem]
-        z-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[-75deg]"
+        z-50 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[-75deg]"
       />
       
       <img
@@ -43,7 +43,7 @@ const ContactsSection = () => {
         alt=""
         className="pointer-events-none select-none absolute 
         bottom-[-4rem] right-[-4.7rem] md:bottom-[-6rem] md:right-[-5rem] lg:bottom-[-8rem] lg:right-[-6rem]
-        z-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[180deg]"
+        z-50 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[180deg]"
       />
 
       <div className="mx-[43.68px] md:mx-16 lg:mx-24 pt-16 md:pt-20 lg:pt-24 text-center z-10 relative max-w-4xl xl:max-w-5xl 2xl:mx-auto">
