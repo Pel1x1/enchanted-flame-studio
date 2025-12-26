@@ -26,7 +26,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 transition-all duration-300 z-50 ${
+      className={`relative top-0 left-0 right-0 transition-all duration-300 z-50 ${
         isScrolled ? 'bg-[#660000]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
       }`}
     >
