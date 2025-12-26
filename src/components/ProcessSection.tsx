@@ -1,5 +1,4 @@
 import { useState } from "react";
-import hibiscusFlower from "/img/flower.png";
 
 const processSteps = [
   {
@@ -50,23 +49,21 @@ const ProcessSection = () => {
 
   return (
     <section
-      id="about"
-      className="relative w-full bg-[#7B0F16] text-[#5E160F] 
-      mt-[10rem]
-      flex justify-center"
+      id="process"
+      className="relative w-full bg-[#7B0F16] text-[#5E160F] mt-[10rem] md:mt-[14rem] lg:mt-[18rem] flex justify-center"
     >
-      {/* Внутренняя «бумага» как на макете */}
       <div className="relative w-full bg-[#EFDEC0]">
         {/* Большой круг сверху */}
-        <div className="absolute -top-[49vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#EFDEC0]" />
-        <div className="absolute -top-[49vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-full bg-[#EFDEC0]" /> 
+        <div className="absolute -top-[49vw] md:-top-[30vw] lg:-top-[20vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#EFDEC0]" />
+        <div className="absolute -top-[49vw] md:-top-[30vw] lg:-top-[20vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-full bg-[#EFDEC0]" /> 
+
         {/* Контент поверх круга */}
-        <div className="relative px-[44px] pt-[7rem]">
-          {/* Заголовок ABOUT THE BRAND */}
-          <div className="text-center mb-8 mt-[-18rem]">
+        <div className="relative px-[44px] md:px-16 lg:px-24 pt-[7rem] md:pt-[10rem] max-w-7xl mx-auto">
+          {/* Заголовок */}
+          <div className="text-center mb-8 md:mb-12 mt-[-18rem] md:mt-[-14rem] lg:mt-[-12rem]">
             <h2
               style={{ fontFamily: 'Bruney' }}
-              className="text-[2.5rem] leading-tight text-[#660000]"
+              className="text-[2.5rem] md:text-5xl lg:text-6xl leading-tight text-[#660000]"
             >
               the work
               <br />
@@ -74,82 +71,118 @@ const ProcessSection = () => {
             </h2>
           </div>
 
-          <div className="relative z-20 flex justify-center gap-2.5">
-          {processSteps.map((step) => (
-            <button
-              key={step.id}
-              style={{ fontFamily: 'Bruney' }}
-              onClick={() => setActiveStep(step.id)}
-              className={`
-                w-8 h-9 rounded-lg text-[1.5rem] mb-2
-                transition-all duration-300 flex-shrink-0
-                bg-[#660000] text-[#EFDEC0]
-                ${activeStep === step.id
-                  ? "relative z-30 -mb-2"
-                  : "relative z-20"
-                }
-              `}
-            >
-              {activeStep === step.id && (
-                <span className="absolute left-0 right-0 -bottom-[30px] h-[40px] bg-[#660000]" />
-              )}
-              {String(step.id).padStart(2, "0")}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative z-10 bg-[#660000] rounded-[1.5rem] p-5 mx-2 h-[380px]">
-          <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
-            <img src='/img/flower.png'
-            className="rotate-[220deg]"
-            />
-          </div>
-
-          <div className="relative z-10">
-            <div>
-              <h3 
-              style={{ fontFamily: 'CormoranB', }}
-              className="text-[14.43px]  text-[#FFF6DB] mb-3">
-                {currentStep.title}
-              </h3>
-              <p 
-              style={{ fontFamily: 'CormorantL', }}
-              className="text-[14.43px] text-[#FFF6DB]  leading-relaxed">
-                {currentStep.description}
-              </p>
+          {/* Мобильная версия */}
+          <div className="md:hidden">
+            <div className="relative z-20 flex justify-center gap-2.5 flex-wrap">
+              {processSteps.map((step) => (
+                <button
+                  key={step.id}
+                  style={{ fontFamily: 'Bruney' }}
+                  onClick={() => setActiveStep(step.id)}
+                  className={`
+                    w-8 h-9 rounded-lg text-[1.5rem] mb-2
+                    transition-all duration-300 flex-shrink-0
+                    bg-[#660000] text-[#EFDEC0]
+                    ${activeStep === step.id
+                      ? "relative z-30 -mb-2"
+                      : "relative z-20"
+                    }
+                  `}
+                >
+                  {activeStep === step.id && (
+                    <span className="absolute left-0 right-0 -bottom-[30px] h-[40px] bg-[#660000]" />
+                  )}
+                  {String(step.id).padStart(2, "0")}
+                </button>
+              ))}
             </div>
 
-            {/* Image placeholder */}
-            <div className="w-full aspect-[4/3] rounded-xl bg-card/20 flex items-center justify-center mb-0 overflow-hidden z-0">
-              <div className="text-center text-primary-foreground/60 z-0">
-                <div className="text-3xl mb-1 z-0">📷</div>
-                <p className="text-xs">Фото этапа {String(activeStep).padStart(2, "0")}</p>
+            <div className="relative z-10 bg-[#660000] rounded-[1.5rem] p-5 mx-2 h-[380px]">
+              <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
+                <img src='/img/flower.png' alt="" className="rotate-[220deg]" />
+              </div>
+
+              <div className="relative z-10">
+                <h3 
+                  style={{ fontFamily: 'CormorantB' }}
+                  className="text-[14.43px] text-[#FFF6DB] mb-3"
+                >
+                  {currentStep.title}
+                </h3>
+                <p 
+                  style={{ fontFamily: 'CormorantL' }}
+                  className="text-[14.43px] text-[#FFF6DB] leading-relaxed"
+                >
+                  {currentStep.description}
+                </p>
+
+                <div className="w-full aspect-[4/3] rounded-xl bg-card/20 flex items-center justify-center mb-0 overflow-hidden z-0">
+                  <div className="text-center text-primary-foreground/60 z-0">
+                    <div className="text-3xl mb-1 z-0">📷</div>
+                    <p className="text-xs">Фото этапа {String(activeStep).padStart(2, "0")}</p>
+                  </div>
+                </div>
               </div>
             </div>
-            
           </div>
-          
-        </div>
-        <div className="text-center mt-[4rem] z-1000">
-            <h2
-              style={{ fontFamily: 'Bruney' }}
-              className="text-[14.43px] leading-tight text-[#660000]"
-            >
-              <span style={{ fontFamily: 'CormorantL' }}> Работа над заказом занимает 7–10 дней </span>
-              <br />
-              <br />
-              <span style={{ fontFamily: 'CormorantB' }}> 
-                "Каждое изделие уникально и выпускается ограниченным тиражом. Небольшие отличия — часть очарования ручной работы."
-              </span>
-            </h2>
-          </div>
-          <div className="absolute -z-10 top-[30vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-[100%] bg-[#EFDEC0]" /> 
-        </div>
-          
-        
 
+          {/* Десктопная версия - сетка шагов */}
+          <div className="hidden md:block">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {processSteps.map((step) => (
+                <button
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  className={`
+                    relative p-6 lg:p-8 rounded-2xl transition-all duration-300
+                    ${activeStep === step.id
+                      ? "bg-[#660000] text-[#EFDEC0] scale-105 shadow-lg"
+                      : "bg-transparent border-2 border-[#660000] text-[#660000] hover:bg-[#660000]/10"
+                    }
+                  `}
+                >
+                  <div 
+                    style={{ fontFamily: 'Bruney' }}
+                    className="text-3xl lg:text-4xl mb-3"
+                  >
+                    {String(step.id).padStart(2, "0")}
+                  </div>
+                  <h3 
+                    style={{ fontFamily: 'CormorantB' }}
+                    className="text-lg lg:text-xl mb-2"
+                  >
+                    {step.title}
+                  </h3>
+                  <p 
+                    style={{ fontFamily: 'CormorantL' }}
+                    className="text-sm lg:text-base leading-relaxed opacity-90"
+                  >
+                    {step.description}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Нижний текст */}
+          <div className="text-center mt-[4rem] md:mt-[6rem] lg:mt-[8rem] pb-8">
+            <div
+              style={{ fontFamily: 'CormorantL' }}
+              className="text-[14.43px] md:text-lg lg:text-xl leading-tight text-[#660000] mb-4"
+            >
+              Работа над заказом занимает 7–10 дней
+            </div>
+            <p 
+              style={{ fontFamily: 'CormorantB' }}
+              className="text-[14.43px] md:text-lg lg:text-xl text-[#660000] max-w-2xl mx-auto"
+            >
+              "Каждое изделие уникально и выпускается ограниченным тиражом. Небольшие отличия — часть очарования ручной работы."
+            </p>
+          </div>
+
+          <div className="absolute -z-10 top-[30vw] md:top-[20vw] left-1/2 -translate-x-1/2 w-[130%] h-full rounded-[100%] bg-[#EFDEC0]" /> 
         </div>
-        
+      </div>
     </section>
   );
 };

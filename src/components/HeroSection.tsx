@@ -11,43 +11,44 @@ const HeroSection = () => {
       {/* Центрированное изображение */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <img
-          src="/img/Frame 40.png"        // положи файл в public/Frame 40.png
+          src="/img/Frame 40.png"
           alt="LUMĒRE frame"
-          width={372}
-          height={532}  
-          className="object-contain max-w-full max-h-full"
+          className="object-contain max-w-full max-h-full w-[372px] md:w-[500px] lg:w-[600px] xl:w-[700px]"
         />
       </div>
 
       <Logo />
 
       {/* Блок соцсетей + текст */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-        <div className="flex items-center justify-center gap-6">
-          <button onClick={scrollToAbout} aria-label="WhatsApp">
+      <div className="absolute bottom-12 md:bottom-16 lg:bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4">
+        <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10">
+          <button onClick={scrollToAbout} aria-label="WhatsApp" className="transition-transform hover:scale-110">
             <img
               src="/img/whatsapp.png"
               alt="WhatsApp"
-              className="w-10 h-10 md:w-10 md:h-10"
+              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
           </button>
-          <button onClick={scrollToAbout} aria-label="Telegram">
+          <button onClick={scrollToAbout} aria-label="Telegram" className="transition-transform hover:scale-110">
             <img
               src="/img/telegram.png"
               alt="Telegram"
-              className="w-8=10 h-10 md:w-10 md:h-10"
+              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
           </button>
-          <button onClick={scrollToAbout} aria-label="Instagram">
+          <button onClick={scrollToAbout} aria-label="Instagram" className="transition-transform hover:scale-110">
             <img
               src="/img/instagram.png"
               alt="Instagram"
-              className="w-10 h-10 md:w-10 md:h-10"
+              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
           </button>
         </div>
 
-        <p className="text-sm md:text-sm tracking-[0.3em] text-[#FFF6DB]" style={{fontFamily: "CormorantL", }}>
+        <p 
+          className="text-sm md:text-base lg:text-lg tracking-[0.3em] text-[#FFF6DB]" 
+          style={{fontFamily: "CormorantL"}}
+        >
           Для заказа
         </p>
       </div>
