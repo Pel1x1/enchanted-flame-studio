@@ -74,7 +74,7 @@ const ProcessSection = () => {
           <div className="md:hidden">
               
             <div className="relative overflow-x-auto no-scrollbar mb-0 h-[64px]">
-              <div className="flex justify-center gap-1.5 items-start h-full">
+              <div className="flex justify-center gap-[9px] w-full ml-0 mr-0 items-start h-full">
                 {processSteps.map((step) => {
                   const isActive = activeStep === step.id;
 
@@ -97,7 +97,7 @@ const ProcessSection = () => {
                 })}
               </div>
             </div>
-            
+
             <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 mx-2 -mt-4 h-[380px]">
               <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
                 <img src='/img/flower.png' alt="" className="rotate-[220deg]" />
