@@ -50,11 +50,11 @@ const DeliverySection = () => {
             </div>
             
             <br/>
-            <p className="text-center">
+            <p className="text-justify">
               Стоимость доставки в цену изделия не входит и рассчитывается отдельно.
             </p>
             <br/>
-            <p style={{ fontFamily: "CormorantM" }} className="text-center">
+            <p style={{ fontFamily: "CormorantM" }} className="text-justify">
               Заказ оформляется через личные сообщения, так как каждое изделие создаётся индивидуально под вас.
             </p>
           </div>
