@@ -99,7 +99,7 @@ const ProcessSection = () => {
             </div>
 
             <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 mx-2 -mt-4 h-[380px]">
-              <div className="absolute left-[10rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
+              <div className="absolute left-[10.2rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
                 <img src='/img/flower.png' alt="" className="rotate-[220deg]" />
               </div>
 
