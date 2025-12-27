@@ -98,7 +98,7 @@ const ProcessSection = () => {
               </div>
             </div>
 
-            <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 mx-2 -mt-4 h-[380px]">
+            <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 mx-2 -mt-4 h-[220px]">
               <div className="absolute left-[10.2rem] top-[14.7rem] w-[240px] h-[240px] pointer-events-none">
                 <img src='/img/flower.png' alt="" className="rotate-[220deg]" />
               </div>
@@ -117,12 +117,13 @@ const ProcessSection = () => {
                   {currentStep.description}
                 </p>
 
+                {/* Фото плейсхолдер 
                 <div className="w-full aspect-[4/3] rounded-xl bg-card/20 flex items-center justify-center mb-0 overflow-hidden z-0">
                   <div className="text-center text-primary-foreground/60 z-0">
                     <div className="text-3xl mb-1 z-0">📷</div>
                     <p className="text-xs">Фото этапа {String(activeStep).padStart(2, "0")}</p>
                   </div>
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>
@@ -135,13 +136,13 @@ const ProcessSection = () => {
                   key={step.id}
                   className="relative bg-[#660000] text-[#EFDEC0] rounded-2xl overflow-hidden"
                 >
-                  {/* Фото плейсхолдер */}
+                  {/* Фото плейсхолдер 
                   <div className="w-full aspect-[4/3] bg-[#4a0000] flex items-center justify-center">
                     <div className="text-center text-[#EFDEC0]/60">
                       <div className="text-4xl mb-2">📷</div>
                       <p style={{ fontFamily: 'CormorantL' }} className="text-sm">Фото этапа {String(step.id).padStart(2, "0")}</p>
                     </div>
-                  </div>
+                  </div>*/}
                   
                   {/* Контент карточки */}
                   <div className="p-5 lg:p-6">
