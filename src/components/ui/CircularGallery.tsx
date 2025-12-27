@@ -35,7 +35,7 @@ function createTextTexture(
   gl: GL,
   text: string,
   font: string = 'bold 30px monospace',
-  color: string = 'black'
+  color: string = ''
 ): { texture: Texture; width: number; height: number } {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -62,9 +62,6 @@ function createTextTexture(
   return { texture, width: canvas.width, height: canvas.height };
 }
 
-
-
-
 interface TitleProps {
   gl: GL;
   plane: Mesh;
@@ -83,7 +80,7 @@ class Title {
   font: string;
   mesh!: Mesh;
 
-  constructor({ gl, plane, renderer, text, textColor = '#660000', font = '10px sans-serif' }: TitleProps) {
+  constructor({ gl, plane, renderer, text, textColor = '#545050', font = '30px sans-serif' }: TitleProps) {
     autoBind(this);
     this.gl = gl;
     this.plane = plane;
@@ -127,7 +124,7 @@ class Title {
     const textHeightScaled = this.plane.scale.y * 0.15;
     const textWidthScaled = textHeightScaled * aspect;
     this.mesh.scale.set(textWidthScaled, textHeightScaled, 1);
-    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 + 0.01;
+    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 - 0.05;
     this.mesh.setParent(this.plane);
   }
 }
@@ -186,11 +183,7 @@ class Media {
   speed: number = 0;
   isBefore: boolean = false;
   isAfter: boolean = false;
-  card!: Mesh; // фон карточки
-  clip!: Mesh;
-  clipOffsetX = 0.35; // смещение по X относительно центра фото
-  clipOffsetY = 0.45; // смещение по Y относительно центра фото
-  
+
   constructor({
     geometry,
     gl,
@@ -229,23 +222,28 @@ class Media {
 
   createShader() {
     const texture = new Texture(this.gl, {
-      generateMipmaps: true
+      generateMipmaps: true,
+      premultiplyAlpha: true,
     });
     this.program = new Program(this.gl, {
-      depthTest: true,
-      depthWrite: true,
+      depthTest: false,
+      depthWrite: false,
       vertex: `
-    precision highp float;
-    attribute vec3 position;
-    attribute vec2 uv;
-    uniform mat4 modelViewMatrix;
-    uniform mat4 projectionMatrix;
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  `,
+        precision highp float;
+        attribute vec3 position;
+        attribute vec2 uv;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        uniform float uTime;
+        uniform float uSpeed;
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          vec3 p = position;
+          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+        }
+      `,
       fragment: `
         precision highp float;
         uniform vec2 uImageSizes;
@@ -273,15 +271,16 @@ class Media {
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           
           float edgeSmooth = 0.002;
-          float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
-          
-          gl_FragColor = vec4(color.rgb, alpha);
+          float alphaMask = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
+            gl_FragColor = vec4(color.rgb, color.a * alphaMask);
         }
       `,
       uniforms: {
         tMap: { value: texture },
         uPlaneSizes: { value: [0, 0] },
         uImageSizes: { value: [0, 0] },
+        uSpeed: { value: 0 },
+        uTime: { value: 100 * Math.random() },
         uBorderRadius: { value: this.borderRadius }
       },
       transparent: true
@@ -296,74 +295,12 @@ class Media {
   }
 
   createMesh() {
-    // основная картинка
     this.plane = new Mesh(this.gl, {
-        geometry: this.geometry,
-        program: this.program
+      geometry: this.geometry,
+      program: this.program
     });
     this.plane.setParent(this.scene);
-
-    // фоновая «полароид»-карточка
-    const cardGeometry = new Plane(this.gl);
-    const cardProgram = new Program(this.gl, {
-        vertex: `
-        attribute vec3 position;
-        attribute vec2 uv;
-        uniform mat4 modelViewMatrix;
-        uniform mat4 projectionMatrix;
-        void main() {
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-        `,
-        fragment: `
-        precision highp float;
-        void main() {
-            gl_FragColor = vec4(0.94, 0.87, 0.75, 1.0); // #EFDEC0
-        }
-        `,
-        transparent: false
-    });
-
-    this.card = new Mesh(this.gl, { geometry: cardGeometry, program: cardProgram });
-    this.card.setParent(this.scene);
-
-    const clipGeometry = new Plane(this.gl);
-    const clipTexture = new Texture(this.gl, { generateMipmaps: true });
-    const img = new Image();
-    img.src = '/img/skrepka.png'; // положи skrepka.jpg в public/img
-    img.onload = () => {
-      clipTexture.image = img;
-    };
-
-    const clipProgram = new Program(this.gl, {
-      vertex: `
-        attribute vec3 position;
-        attribute vec2 uv;
-        uniform mat4 modelViewMatrix;
-        uniform mat4 projectionMatrix;
-        varying vec2 vUv;
-        void main() {
-          vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragment: `
-        precision highp float;
-        uniform sampler2D tMap;
-        varying vec2 vUv;
-        void main() {
-          vec4 color = texture2D(tMap, vUv);
-          if (color.a < 0.1) discard;
-          gl_FragColor = color;
-        }
-      `,
-      uniforms: { tMap: { value: clipTexture } },
-      transparent: true,
-    });
-
-    this.clip = new Mesh(this.gl, { geometry: clipGeometry, program: clipProgram });
-    this.clip.setParent(this.card);
-    }      
+  }
 
   createTitle() {
     this.title = new Title({
@@ -400,12 +337,9 @@ class Media {
       }
     }
 
-    if (this.card) {
-      this.card.position.x = this.plane.position.x;
-      this.card.position.y = this.plane.position.y;
-      this.card.rotation.z = this.plane.rotation.z;
-    }
-
+    this.speed = scroll.current - scroll.last;
+    this.program.uniforms.uTime.value += 0.04;
+    this.program.uniforms.uSpeed.value = this.speed;
 
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
@@ -424,57 +358,20 @@ class Media {
   onResize({ screen, viewport }: { screen?: ScreenSize; viewport?: Viewport } = {}) {
     if (screen) this.screen = screen;
     if (viewport) {
-        this.viewport = viewport;
-        if (this.plane.program.uniforms.uViewportSizes) {
+      this.viewport = viewport;
+      if (this.plane.program.uniforms.uViewportSizes) {
         this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
-        }
+      }
     }
-
     this.scale = this.screen.height / 1500;
-
-    // размер картинки
-    this.plane.scale.y = (this.viewport.height * (500 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (400 * this.scale)) / this.screen.width;
-    this.plane.position.z = 0.02;
+    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
+    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
-
-
-    if (this.clip) {
-      const clipHeight = this.plane.scale.y * 0.05;
-      const clipWidth = clipHeight * 0.6;
-      this.clip.scale.set(clipWidth, clipHeight, 1);
-
-      const dx = 1; // в юнитах сцены вправо
-      const dy = 0.9; // вверх
-
-      this.clip.position.x = this.plane.position.x;
-      this.clip.position.y = this.plane.position.y + 0.47;
-      this.clip.position.z = 0.02;
-    } 
-    // размер полароид-карточки (чуть больше по ширине и ниже по высоте)
-    if (this.card) {
-        const paddingX = this.plane.scale.x * 0.10;  // поля слева/справа
-        const paddingTop = this.plane.scale.y * 0.2;
-        const paddingBottom = this.plane.scale.y * 0.0; // снизу побольше, как у polaroid
-
-        this.card.scale.x = this.plane.scale.x + paddingX;
-        this.card.scale.y = this.plane.scale.y + paddingTop + paddingBottom;
-        this.card.position.z = 0.01;
-
-        // по X центр совпадает
-        this.card.position.x = this.plane.position.x;
-        // по Y — чуть ниже, чтобы картинка была в верхней части карточки
-        this.card.position.y = this.plane.position.y - (paddingBottom - paddingTop) / 2 - 0.02;
-    }
-
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
-
-
-
-    }
+  }
 }
 
 interface AppConfig {
@@ -545,16 +442,28 @@ class App {
     this.addEventListeners();
   }
 
-  createRenderer() {
-    this.renderer = new Renderer({
-      alpha: true,
-      antialias: true,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
-    });
-    this.gl = this.renderer.gl;
-    this.gl.clearColor(0, 0, 0, 0);
-    this.container.appendChild(this.renderer.gl.canvas as HTMLCanvasElement);
-  }
+createRenderer() {
+  this.renderer = new Renderer({
+    alpha: true,
+    antialias: true,
+    dpr: Math.min(window.devicePixelRatio || 1, 2),
+    
+    premultipliedAlpha: true,
+  });
+
+  this.gl = this.renderer.gl;
+
+  this.gl.clearColor(0, 0, 0, 0);
+
+  this.gl.enable(this.gl.BLEND);
+
+  this.gl.blendFunc(this.gl.ONE, this.gl.ONE_MINUS_SRC_ALPHA);
+
+
+  this.container.appendChild(this.renderer.gl.canvas as HTMLCanvasElement);
+}
+
+
 
   createCamera() {
     this.camera = new Camera(this.gl);
@@ -581,6 +490,50 @@ class App {
     font: string
   ) {
     const defaultItems = [
+      {
+        image: `https://picsum.photos/seed/1/800/600?grayscale`,
+        text: 'Bridge'
+      },
+      {
+        image: `https://picsum.photos/seed/2/800/600?grayscale`,
+        text: 'Desk Setup'
+      },
+      {
+        image: `https://picsum.photos/seed/3/800/600?grayscale`,
+        text: 'Waterfall'
+      },
+      {
+        image: `https://picsum.photos/seed/4/800/600?grayscale`,
+        text: 'Strawberries'
+      },
+      {
+        image: `https://picsum.photos/seed/5/800/600?grayscale`,
+        text: 'Deep Diving'
+      },
+      {
+        image: `https://picsum.photos/seed/16/800/600?grayscale`,
+        text: 'Train Track'
+      },
+      {
+        image: `https://picsum.photos/seed/17/800/600?grayscale`,
+        text: 'Santorini'
+      },
+      {
+        image: `https://picsum.photos/seed/8/800/600?grayscale`,
+        text: 'Blurry Lights'
+      },
+      {
+        image: `https://picsum.photos/seed/9/800/600?grayscale`,
+        text: 'New York'
+      },
+      {
+        image: `https://picsum.photos/seed/10/800/600?grayscale`,
+        text: 'Good Boy'
+      },
+      {
+        image: `https://picsum.photos/seed/21/800/600?grayscale`,
+        text: 'Coastline'
+      },
       {
         image: `https://picsum.photos/seed/12/800/600?grayscale`,
         text: 'Palm Trees'
@@ -671,26 +624,21 @@ class App {
   }
 
   addEventListeners() {
-  this.boundOnResize = this.onResize.bind(this);
-  window.addEventListener('resize', this.boundOnResize);
-
-  // ВАЖНО: wheel только на контейнер
-  this.boundOnWheel = this.onWheel.bind(this);
-  this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
-
-  // Drag тоже на контейнер (а move/up можно оставить на window)
-  this.boundOnTouchDown = this.onTouchDown.bind(this);
-  this.boundOnTouchMove = this.onTouchMove.bind(this);
-  this.boundOnTouchUp = this.onTouchUp.bind(this);
-
-  this.container.addEventListener('mousedown', this.boundOnTouchDown);
-  window.addEventListener('mousemove', this.boundOnTouchMove);
-  window.addEventListener('mouseup', this.boundOnTouchUp);
-
-  this.container.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
-  window.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
-  window.addEventListener('touchend', this.boundOnTouchUp);
-}
+    this.boundOnResize = this.onResize.bind(this);
+    this.boundOnWheel = this.onWheel.bind(this);
+    this.boundOnTouchDown = this.onTouchDown.bind(this);
+    this.boundOnTouchMove = this.onTouchMove.bind(this);
+    this.boundOnTouchUp = this.onTouchUp.bind(this);
+    window.addEventListener('resize', this.boundOnResize);
+    window.addEventListener('mousewheel', this.boundOnWheel);
+    window.addEventListener('wheel', this.boundOnWheel);
+    window.addEventListener('mousedown', this.boundOnTouchDown);
+    window.addEventListener('mousemove', this.boundOnTouchMove);
+    window.addEventListener('mouseup', this.boundOnTouchUp);
+    window.addEventListener('touchstart', this.boundOnTouchDown);
+    window.addEventListener('touchmove', this.boundOnTouchMove);
+    window.addEventListener('touchend', this.boundOnTouchUp);
+  }
 
   destroy() {
     window.cancelAnimationFrame(this.raf);

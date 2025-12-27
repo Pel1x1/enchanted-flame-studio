@@ -46,7 +46,7 @@ const ContactsSection = () => {
         z-50 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[180deg]"
       />
 
-      <div className="mx-[43.68px] md:mx-16 lg:mx-24 pt-16 md:pt-20 lg:pt-24 text-center z-10 relative max-w-4xl xl:max-w-5xl 2xl:mx-auto">
+      <div className="mx-[43.68px] md:mx-16 lg:mx-24 pt-16 md:pt-20 lg:pt-24 text-center z-10 relative max-w-full">
         {/* Section Title */}
         <h2 
           style={{ fontFamily: 'Bruney' }}
@@ -118,20 +118,20 @@ const ContactsSection = () => {
           </div>
         </div>
 
+                {/* Десктопная версия */}
         {/* Десктопная версия */}
-        <div className="hidden md:flex md:flex-col md:items-center md:gap-8 lg:gap-10">
-          <div className="flex gap-8 lg:gap-12">
-            <div>
-              <h3 
-                style={{ fontFamily: 'CormorantR' }}
+        <div className="hidden md:flex w-full justify-center">
+          <div className="flex flex-col items-center md:gap-8 lg:gap-10 w-fit">
+            <div className="flex flex-wrap justify-center gap-8 lg:gap-12">
+              <div>
+              <h3
+                style={{ fontFamily: "CormorantR" }}
                 className="text-lg lg:text-xl mb-4 text-[#660000]"
               >
                 Для заказа:
               </h3>
-              <div 
-                style={{ fontFamily: 'CormorantR' }}
-                className="flex gap-4"
-              >
+
+              <div style={{ fontFamily: "CormorantR" }} className="flex flex-wrap justify-center gap-4">
                 {buyLinks.map((link) => (
                   <Button
                     key={link.name}
@@ -146,15 +146,16 @@ const ContactsSection = () => {
                 ))}
               </div>
             </div>
-            
+
             <div>
-              <h3 
-                style={{ fontFamily: 'CormorantR' }}
+              <h3
+                style={{ fontFamily: "CormorantR" }}
                 className="text-lg lg:text-xl mb-4 text-[#660000]"
               >
                 Для просмотра:
               </h3>
-              <div style={{ fontFamily: 'CormorantR' }} className="flex gap-4">
+
+              <div style={{ fontFamily: "CormorantR" }} className="flex flex-wrap justify-center gap-4">
                 {watchLinks.map((link) => (
                   <Button
                     key={link.name}
@@ -172,6 +173,10 @@ const ContactsSection = () => {
           </div>
         </div>
       </div>
+
+      </div>
+
+
     </section>
   );
 };

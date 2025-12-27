@@ -59,7 +59,7 @@ const ProcessSection = () => {
         {/* Контент поверх круга */}
         <div className="relative px-[44px] md:px-16 lg:px-24 pt-[7rem] md:pt-[10rem] max-w-7xl mx-auto">
           {/* Заголовок */}
-          <div className="text-center mb-8 md:mb-12 mt-[-18rem] md:mt-[-14rem] lg:mt-[-12rem]">
+          <div className="text-center mb-8 md:mb-12 mt-[-18rem] md:mt-[-19rem] lg:mt-[-20rem]">
             <h2
               style={{ fontFamily: 'Bruney' }}
               className="text-[2.5rem] md:text-5xl lg:text-6xl leading-tight text-[#660000]"
