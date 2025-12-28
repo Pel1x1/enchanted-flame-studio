@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
 import './CircularGallery.css';
 
@@ -441,6 +441,23 @@ class App {
     this.update();
     this.addEventListeners();
   }
+  
+  scrollByItem(dir: 1 | -1) {
+  if (!this.medias || !this.medias[0]) return;
+  const width = this.medias[0].width;
+  // dir: 1 = вправо, -1 = влево
+  this.scroll.target += dir * width;
+  this.onCheck(); // зафиксирует target на ближайшем item
+  }
+
+  next() {
+  this.scrollByItem(1);
+  }
+
+  prev() {
+  this.scrollByItem(-1);
+  }
+
 
 createRenderer() {
   this.renderer = new Renderer({
@@ -594,6 +611,8 @@ createRenderer() {
     this.scroll.target = this.scroll.target < 0 ? -item : item;
   }
 
+
+  
   onResize() {
     this.screen = {
       width: this.container.clientWidth,
@@ -624,39 +643,50 @@ createRenderer() {
   }
 
   addEventListeners() {
-    this.boundOnResize = this.onResize.bind(this);
-    this.boundOnWheel = this.onWheel.bind(this);
-    this.boundOnTouchDown = this.onTouchDown.bind(this);
-    this.boundOnTouchMove = this.onTouchMove.bind(this);
-    this.boundOnTouchUp = this.onTouchUp.bind(this);
-    window.addEventListener('resize', this.boundOnResize);
-    window.addEventListener('mousewheel', this.boundOnWheel);
-    window.addEventListener('wheel', this.boundOnWheel);
-    window.addEventListener('mousedown', this.boundOnTouchDown);
-    window.addEventListener('mousemove', this.boundOnTouchMove);
-    window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown);
-    window.addEventListener('touchmove', this.boundOnTouchMove);
-    window.addEventListener('touchend', this.boundOnTouchUp);
-  }
+  this.boundOnResize = this.onResize.bind(this);
+  this.boundOnWheel = this.onWheel.bind(this);
+  this.boundOnTouchDown = this.onTouchDown.bind(this);
+  this.boundOnTouchMove = this.onTouchMove.bind(this);
+  this.boundOnTouchUp = this.onTouchUp.bind(this);
+
+  window.addEventListener('resize', this.boundOnResize);
+
+  // только этот контейнер
+  //this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
+
+
+  // старт drag только на контейнере
+  this.container.addEventListener('mousedown', this.boundOnTouchDown);
+  window.addEventListener('mousemove', this.boundOnTouchMove);
+  window.addEventListener('mouseup', this.boundOnTouchUp);
+
+  this.container.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
+  window.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
+  window.addEventListener('touchend', this.boundOnTouchUp);
+}
+
 
   destroy() {
-    window.cancelAnimationFrame(this.raf);
-    window.removeEventListener('resize', this.boundOnResize);
-    window.removeEventListener('mousewheel', this.boundOnWheel);
-    window.removeEventListener('wheel', this.boundOnWheel);
-    window.removeEventListener('mousedown', this.boundOnTouchDown);
-    window.removeEventListener('mousemove', this.boundOnTouchMove);
-    window.removeEventListener('mouseup', this.boundOnTouchUp);
-    window.removeEventListener('touchstart', this.boundOnTouchDown);
-    window.removeEventListener('touchmove', this.boundOnTouchMove);
-    window.removeEventListener('touchend', this.boundOnTouchUp);
-    if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
-      this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
-    }
+  window.cancelAnimationFrame(this.raf);
+
+  window.removeEventListener('resize', this.boundOnResize);
+
+  //this.container.removeEventListener('wheel', this.boundOnWheel as any);
+
+  this.container.removeEventListener('mousedown', this.boundOnTouchDown);
+  window.removeEventListener('mousemove', this.boundOnTouchMove);
+  window.removeEventListener('mouseup', this.boundOnTouchUp);
+
+  this.container.removeEventListener('touchstart', this.boundOnTouchDown as any);
+  window.removeEventListener('touchmove', this.boundOnTouchMove as any);
+  window.removeEventListener('touchend', this.boundOnTouchUp);
+
+  if (this.renderer?.gl?.canvas?.parentNode) {
+    this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
   }
 }
 
+}
 interface CircularGalleryProps {
   items?: { image: string; text: string }[];
   bend?: number;
@@ -667,18 +697,39 @@ interface CircularGalleryProps {
   scrollEase?: number;
 }
 
-export default function CircularGallery({
-  items,
-  bend = 3,
-  textColor = '#ffffff',
-  borderRadius = 0.05,
-  font = 'bold 30px Figtree',
-  scrollSpeed = 2,
-  scrollEase = 0.05
-}: CircularGalleryProps) {
+export type CircularGalleryHandle = {
+  next: () => void;
+  prev: () => void;
+};
+
+
+const CircularGallery = forwardRef<CircularGalleryHandle, CircularGalleryProps>(function CircularGallery(
+  {
+    items,
+    bend = 3,
+    textColor = '#ffffff',
+    borderRadius = 0.05,
+    font = 'bold 30px Figtree',
+    scrollSpeed = 2,
+    scrollEase = 0.05
+  },
+  ref
+) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const appRef = useRef<App | null>(null);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      next: () => appRef.current?.next(),
+      prev: () => appRef.current?.prev(),
+    }),
+    []
+  );
+
   useEffect(() => {
     if (!containerRef.current) return;
+
     const app = new App(containerRef.current, {
       items,
       bend,
@@ -688,9 +739,16 @@ export default function CircularGallery({
       scrollSpeed,
       scrollEase
     });
+
+    appRef.current = app;
+
     return () => {
       app.destroy();
+      appRef.current = null;
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+
   return <div className="circular-gallery" ref={containerRef} />;
-}
+});
+
+export default CircularGallery;

@@ -27,7 +27,6 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10">
         <HeroSection />
-        <div className='h-[250px] md:h-[300px] lg:h-[350px]'></div>
         <AboutSection />
         <PortfolioSection />
         <ProcessSection />

@@ -2,15 +2,15 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative w-full bg-[#7B0F16] text-[#5E160F] flex justify-center"
+      className="relative w-full text-[#660000] flex justify-center"
     >
       {/* Внутренняя «бумага» как на макете */}
-      <div className="relative w-full bg-[#F5E2C6] pb-5">
-        {/* Большой круг сверху */}
-        <div className="absolute -top-[55vw] md:-top-[35vw] lg:-top-[25vw] left-1/2 -translate-x-1/2 w-full h-full rounded-full bg-[#F5E2C6]" />
-          
+      <div className="relative w-full bg-[#F5E2C6] pb-5 rounded-t-full lg:rounded-t-full">
+        {/* Большой круг сверху 
+        <div className="relative -mt-[200px] w-full h-[0px] lg:h-[600px] rounded-t-full bg-[#F5E2C6] border border-red-500" />
+*/}
         {/* Контент поверх круга */}
-        <div className="relative px-[44px] md:px-16 lg:px-24 xl:px-32 pt-24 max-w-7xl mx-auto">
+        <div className="relative px-[44px] md:px-16 lg:px-24 xl:px-32 pt-[20rem] max-w-7xl mx-auto">
           {/* Заголовок ABOUT THE BRAND */}
           <div className="text-center mb-10 md:mb-16 mt-[-15rem] md:mt-[-12rem] lg:mt-[-10rem]">
             <h2

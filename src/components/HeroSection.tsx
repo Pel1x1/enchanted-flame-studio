@@ -9,18 +9,18 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen mt-[-2rem] flex flex-col items-center justify-center px-6 pb-12 text-[#660000] z-10">
       {/* Центрированное изображение */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 flex -mt-[7.5rem] items-center justify-center pointer-events-none">
         <img
           src="/img/Frame 40.png"
           alt="LUMĒRE frame"
-          className="object-contain max-w-full  w-[372px] md:w-[500px] lg:w-[600px] xl:w-[600px] lg:rotate-90"
+          className="object-contain max-w-full w-[372px] md:w-[500px] lg:w-[600px] xl:w-[550px] lg:rotate-90"
         />
       </div>
 
       <Logo />
 
       {/* Блок соцсетей + текст */}
-      <div className="absolute bottom-12 md:bottom-16 lg:bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4">
+      <div className="absolute bottom-[6rem] md:bottom-16 lg:bottom-[4rem] left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4">
         <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10">
           <button onClick={scrollToAbout} aria-label="WhatsApp" className="transition-transform hover:scale-110">
             <img
