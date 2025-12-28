@@ -16,7 +16,7 @@ const DeliverySection = () => {
           >
             <span style={{ fontFamily: 'CormorantB' }} className="text-lg md:text-xl lg:text-2xl">Доставка</span>
             <br/><br/>
-            <span style={{ fontFamily: "CormorantM" }}>
+            <span style={{ fontFamily: "CormorantM" }} className="text-justify">
               Мы предлагаем несколько удобных способов доставки, чтобы вы могли выбрать тот, который подходит именно вам:
             </span>
 
@@ -50,11 +50,11 @@ const DeliverySection = () => {
             </div>
             
             <br/>
-            <p className="text-justify">
+            <p style={{ fontFamily: "CormorantR" }} className="text-justify md:text-center">
               Стоимость доставки в цену изделия не входит и рассчитывается отдельно.
             </p>
             <br/>
-            <p style={{ fontFamily: "CormorantM" }} className="text-justify">
+            <p style={{ fontFamily: "CormorantM" }} className="text-justify md:text-center">
               Заказ оформляется через личные сообщения, так как каждое изделие создаётся индивидуально под вас.
             </p>
           </div>

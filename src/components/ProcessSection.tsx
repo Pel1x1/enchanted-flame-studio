@@ -171,7 +171,7 @@ const ProcessSection = () => {
           </div>
 
           {/* Нижний текст */}
-          <div className="text-center mt-[4rem] md:mt-[6rem] lg:mt-[8rem] pb-8">
+          <div className="text-center mt-[4rem] md:mt-[2rem] lg:mt-[4rem] pb-8">
             <div
               style={{ fontFamily: 'CormorantL' }}
               className="text-[14.43px] md:text-lg lg:text-xl leading-tight text-[#660000] mb-4"

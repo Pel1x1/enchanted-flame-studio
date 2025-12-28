@@ -12,7 +12,7 @@ const watchLinks = [
 
 const ContactsSection = () => {
   return (
-    <section id="contacts" className="relative bg-[#EFDEC0] pb-[4rem] md:pb-[6rem] lg:pb-[8rem]">
+    <section id="contacts" className="relative bg-[#EFDEC0] pb-[4rem] md:pb-[6rem] lg:pb-[8rem] md:px-16 lg:px-24">
       {/* Декоративные цветы */}
       <img
         src="/img/flower.png"
@@ -43,10 +43,10 @@ const ContactsSection = () => {
         alt=""
         className="pointer-events-none select-none absolute 
         bottom-[-4rem] right-[-4.7rem] md:bottom-[-6rem] md:right-[-5rem] lg:bottom-[-8rem] lg:right-[-6rem]
-        z-50 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[180deg]"
+        z-50 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] rotate-[180deg] "
       />
 
-      <div className="mx-[43.68px] md:mx-16 lg:mx-24 pt-16 md:pt-20 lg:pt-24 text-center z-10 relative max-w-full">
+      <div className="max-w-5xl mx-auto pt-16 md:pt-20 lg:pt-24 text-center z-10 relative px-[43.68px]">
         {/* Section Title */}
         <h2 
           style={{ fontFamily: 'Bruney' }}
@@ -58,7 +58,7 @@ const ContactsSection = () => {
         {/* CTA Text */}
         <p 
           style={{ fontFamily: 'CormorantR' }}
-          className="text-[14.43px] md:text-lg lg:text-xl text-[#660000] text-justify md:text-center mb-4 md:mb-8 max-w-2xl mx-auto"
+          className="text-[14.43px] md:text-lg lg:text-xl text-[#660000] text-justify md:text-center mb-4 md:mb-8"
         >
           Если вы хотите особенную свечу или подарок, 
           напишите в любой удобный мессенджер. 
