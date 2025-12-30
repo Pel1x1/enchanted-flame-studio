@@ -119,7 +119,7 @@ const AboutSection = () => {
             <div className="hidden md:flex md:items-start md:justify-between gap-4 lg:gap-8">
               {/* Левый цветок */}
               <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -ml-4 lg:-ml-8">
-                <img src='/img/flower.png' alt="" className="w-full opacity-70" />
+                <img src='/img/flower.png' alt="" className="w-full" />
               </div>
 
               {/* 3 колонки текста */}
@@ -175,7 +175,7 @@ const AboutSection = () => {
 
               {/* Правый цветок */}
               <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -mr-4 lg:-mr-8">
-                <img src='/img/flower.png' alt="" className="w-full opacity-70 rotate-180" />
+                <img src='/img/flower.png' alt="" className="w-full rotate-180" />
               </div>
             </div>
           </div>
