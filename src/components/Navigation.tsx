@@ -4,6 +4,7 @@ const navItems = [
   { label: 'О бренде', href: '#about' },
   { label: 'Портфолио', href: '#portfolio' },
   { label: 'Процесс', href: '#process' },
+  { label: '', href: '' },
   { label: 'Доставка', href: '#delivery' },
   { label: 'Контакты', href: '#contacts' },
 ];
@@ -72,8 +73,7 @@ const Navigation = () => {
                   >
                     {item.label}
                   </button>
-                  {/* После третьего элемента вставляем «разрыв строки» */}
-                  {index === 2 && <span className="w-full h-0 block" />}
+
                 </div>
               ))}
             </div>

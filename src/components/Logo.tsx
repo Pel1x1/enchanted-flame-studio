@@ -5,7 +5,7 @@ const Logo = () => {
         style={{ fontFamily: 'Bruney' }}
         className="text-[52px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem]
         font-light tracking-[0.05em] text-[#660000] text-glow
-        mt-[5rem] md:mt-[3rem] lg:mt-[-1rem]"
+        mt-[0rem] md:mt-[3rem] lg:mt-[-1rem]"
       >
         Lum<span className="relative">e</span>re
       </h1>

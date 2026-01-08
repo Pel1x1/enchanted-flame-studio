@@ -161,7 +161,7 @@ const PortfolioMobile = () => {
   const galleryRef6 = useRef<CircularGalleryHandle | null>(null);
 
   return (
-    <section id="portfolio" className="relative py-[5rem] mb-[12.5rem]">
+    <section id="portfolio" className="relative py-[5rem] mb-[1.5rem]">
       <h2 style={{ fontFamily: "Bruney" }} className="text-[2rem] text-center mb-6 text-[#FFF6DB] px-5">
         PoRtfoLio
       </h2>

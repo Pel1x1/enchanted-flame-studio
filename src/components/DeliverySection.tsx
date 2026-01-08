@@ -1,6 +1,6 @@
 const DeliverySection = () => {
   return (
-    <section id="delivery" className="relative py-24 md:py-32 lg:py-40 px-[43.68px] md:px-16 lg:px-24">
+    <section id="delivery" className="relative pb-24 md:py-32 lg:py-40 px-[43.68px] md:px-16 lg:px-24">
       <div className="text-center max-w-5xl mx-auto">
         <div className="text-center mb-8 mt-[6rem] md:mt-[4rem]">
           <h2
