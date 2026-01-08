@@ -15,7 +15,7 @@ const ContactsSection = () => {
     <section id="contacts" className="relative bg-[#EFDEC0] pb-[4rem] md:pb-[6rem] lg:pb-[8rem] md:px-16 lg:px-24">
       {/* Декоративные цветы */}
       <img
-        src="/img/flower.png"
+        src="/img/flower.webp"
         alt=""
         className="pointer-events-none select-none absolute 
         top-[-7.5rem] left-[-7rem] md:top-[-10rem] md:left-[-8rem] lg:top-[-12rem] lg:left-[-10rem]
@@ -23,7 +23,7 @@ const ContactsSection = () => {
       />
       
       <img
-        src="/img/flower.png"
+        src="/img/flower.webp"
         alt=""
         className="pointer-events-none select-none absolute 
         top-[-6.8rem] right-[-6.5rem] md:top-[-10rem] md:right-[-8rem] lg:top-[-12rem] lg:right-[-10rem]
@@ -31,7 +31,7 @@ const ContactsSection = () => {
       />
       
       <img
-        src="/img/flower.png"
+        src="/img/flower.webp"
         alt=""
         className="pointer-events-none select-none absolute 
         bottom-[-4.5rem] left-[-3.8rem] md:bottom-[-6rem] md:left-[-5rem] lg:bottom-[-8rem] lg:left-[-6rem]
@@ -39,7 +39,7 @@ const ContactsSection = () => {
       />
       
       <img
-        src="/img/flower.png"
+        src="/img/flower.webp"
         alt=""
         className="pointer-events-none select-none absolute 
         bottom-[-4rem] right-[-4.7rem] md:bottom-[-6rem] md:right-[-5rem] lg:bottom-[-8rem] lg:right-[-6rem]

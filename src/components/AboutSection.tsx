@@ -53,7 +53,7 @@ const AboutSection = () => {
               {/* Блок 1: Ручная работа */}
               <div className="relative">
                 <div className="absolute -left-[135px] -top-[70px] w-[240px] h-[240px] pointer-events-none">
-                  <img src='/img/flower.png' alt="" />
+                  <img src='/img/flower.webp' alt="" />
                 </div>
                 <div className="ml-[110px] pr-0">
                   <h3
@@ -75,7 +75,7 @@ const AboutSection = () => {
               {/* Блок 2: Ограниченные партии */}
               <div className="relative py-[1rem]">
                 <div className="absolute -right-[8rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
-                  <img src='/img/flower.png' alt="" className="rotate-[210deg]" />
+                  <img src='/img/flower.webp' alt="" className="rotate-[210deg]" />
                 </div>
                 <div className="pr-[60px]">
                   <h3
@@ -96,7 +96,7 @@ const AboutSection = () => {
               {/* Блок 3: Натуральные материалы */}
               <div className="relative">
                 <div className="absolute -left-[7rem] top-[-3rem] w-[240px] h-[240px] pointer-events-none">
-                  <img src='/img/flower.png' alt="" className="rotate-[-75deg]" />
+                  <img src='/img/flower.webp' alt="" className="rotate-[-75deg]" />
                 </div>
                 <div className="ml-[110px]">
                   <h3
@@ -119,7 +119,7 @@ const AboutSection = () => {
             <div className="hidden md:flex md:items-start md:justify-between gap-4 lg:gap-8">
               {/* Левый цветок */}
               <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -ml-4 lg:-ml-8">
-                <img src='/img/flower.png' alt="" className="w-full" />
+                <img src='/img/flower.webp' alt="" className="w-full" />
               </div>
 
               {/* 3 колонки текста */}
@@ -175,7 +175,7 @@ const AboutSection = () => {
 
               {/* Правый цветок */}
               <div className="flex-shrink-0 w-[120px] lg:w-[160px] xl:w-[200px] -mr-4 lg:-mr-8">
-                <img src='/img/flower.png' alt="" className="w-full rotate-180" />
+                <img src='/img/flower.webp' alt="" className="w-full rotate-180" />
               </div>
             </div>
           </div>

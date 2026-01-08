@@ -1,6 +1,6 @@
-import leaf1 from '/img/leaf-1.png';
-import leaf2 from '/img/leaf-2.png';
-import leaf3 from '/img/leaf-3.png';
+import leaf1 from '/img/leaf-1.webp';
+import leaf2 from '/img/leaf-2.webp';
+import leaf3 from '/img/leaf-3.webp';
 
 const FloatingLeaves = () => {
   return (

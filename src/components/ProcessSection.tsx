@@ -123,7 +123,7 @@ function ProcessMobile({ steps, activeStep, onChange }) {
       {/* карточка шага */}
       <div className="relative z-10 bg-[#660000] rounded-[1.5rem] px-5 pb-5 pt-10 -mt-6 h-[310px]">
         <div className="absolute right-[-4.5rem] bottom-[-4.6rem] w-[240px] h-[240px] pointer-events-none">
-          <img src="/img/flower.png" alt="" className="rotate-[220deg]" />
+          <img src="/img/flower.webp" alt="" className="rotate-[220deg]" />
         </div>
 
         <div className="relative z-10">
@@ -150,16 +150,16 @@ function ProcessDesktop({ steps }) {
     <div className="hidden md:block">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         <div className="absolute right-[-4.5rem] bottom-[0rem] w-[240px] h-[240px] pointer-events-none">
-          <img src="/img/flower.png" alt="" className="rotate-[220deg]" />
+          <img src="/img/flower.webp" alt="" className="rotate-[220deg]" />
         </div>
         <div className="absolute left-[-4.5rem] bottom-[0rem] w-[240px] h-[240px] pointer-events-none">
-          <img src="/img/flower.png" alt="" className="rotate-[280deg]" />
+          <img src="/img/flower.webp" alt="" className="rotate-[280deg]" />
         </div>
         <div className="absolute left-[10rem] top-[0rem] w-[240px] h-[240px] pointer-events-none">
-          <img src="/img/flower.png" alt="" className="rotate-[220deg]" />
+          <img src="/img/flower.webp" alt="" className="rotate-[220deg]" />
         </div>
         <div className="absolute right-[10rem] top-[0rem] w-[240px] h-[240px] pointer-events-none">
-          <img src="/img/flower.png" alt="" className="rotate-[300deg]" />
+          <img src="/img/flower.webp" alt="" className="rotate-[300deg]" />
         </div>
 
         {steps.map((step) => (

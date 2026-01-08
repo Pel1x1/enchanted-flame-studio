@@ -26,19 +26,28 @@ const galleryRef3 = useRef<CircularGalleryHandle | null>(null);
       </h3>
 
       <div className="h-[650px] relative mt-[-80px]">
-        <div className="pointer-events-none absolute top-[-1.5rem] left-0 right-0 flex justify-center z-0">
-          <img src="/img/line.png" alt="" className="w-full object-contain" />
+        <div className="pointer-events-none absolute left-0 right-0 flex justify-center z-0 
+          top-[0.5rem] 
+          min-[900px]:top-[0.5rem] 
+          min-[1250px]:top-[-0.5rem] 
+          min-[1350px]:top-[-1.5rem]
+          min-[1500px]:top-[-2.5rem]
+          min-[1650px]:top-[-3.5rem]
+          "
+          >
+          <img src="/img/line.webp" alt="" className="w-full object-contain" />
         </div>
+
 
         <CircularGallery
           ref={galleryRef1}
           items={[
-            { image: `/img/candles/Frame 45.png`, text: "" },
-            { image: `/img/candles/Frame 46.png`, text: "" },
-            { image: `/img/candles/Frame 47.png`, text: "" },
-            { image: `/img/candles/Frame 48.png`, text: "" },
-            { image: `/img/candles/Frame 49.png`, text: "" },
-            { image: `/img/candles/Frame 50.png`, text: "" },
+            { image: `/img/candles/Frame 45.webp`, text: "" },
+            { image: `/img/candles/Frame 46.webp`, text: "" },
+            { image: `/img/candles/Frame 47.webp`, text: "" },
+            { image: `/img/candles/Frame 48.webp`, text: "" },
+            { image: `/img/candles/Frame 49.webp`, text: "" },
+            { image: `/img/candles/Frame 50.webp`, text: "" },
           ]}
           bend={-3}
           textColor="#660000"
@@ -67,16 +76,24 @@ const galleryRef3 = useRef<CircularGalleryHandle | null>(null);
       </h3>
 
       <div className="h-[650px] relative mt-[-80px]">
-        <div className="pointer-events-none absolute top-[-1.5rem] left-0 right-0 flex justify-center z-0">
-          <img src="/img/line.png" alt="" className="w-full object-contain" />
+         <div className="pointer-events-none absolute left-0 right-0 flex justify-center z-0 
+          top-[0.5rem] 
+          min-[900px]:top-[0.5rem] 
+          min-[1250px]:top-[-0.5rem] 
+          min-[1350px]:top-[-1.5rem]
+          min-[1500px]:top-[-2.5rem]
+          min-[1650px]:top-[-3.5rem]
+          "
+          >
+          <img src="/img/line.webp" alt="" className="w-full object-contain" />
         </div>
 
         <CircularGallery
           ref={galleryRef2}
           items={[
-            { image: `/img/candles/Frame 51.png`, text: "" },
-            { image: `/img/candles/Frame 52.png`, text: "" },
-            { image: `/img/candles/Frame 53.png`, text: "" },
+            { image: `/img/candles/Frame 51.webp`, text: "" },
+            { image: `/img/candles/Frame 52.webp`, text: "" },
+            { image: `/img/candles/Frame 53.webp`, text: "" },
           ]}
           bend={-3}
           textColor="#660000"
@@ -113,18 +130,26 @@ const galleryRef3 = useRef<CircularGalleryHandle | null>(null);
       </h3>
 
         <div className="h-[650px] relative mt-[-80px]">
-        <div className="pointer-events-none absolute top-[-1.5rem] left-0 right-0 flex justify-center z-0">
-          <img src="/img/line.png" alt="" className="w-full object-contain" />
+         <div className="pointer-events-none absolute left-0 right-0 flex justify-center z-0 
+          top-[0.5rem] 
+          min-[900px]:top-[0.5rem] 
+          min-[1250px]:top-[-0.5rem] 
+          min-[1350px]:top-[-1.5rem]
+          min-[1500px]:top-[-2.5rem]
+          min-[1650px]:top-[-3.5rem]
+          "
+          >
+          <img src="/img/line.webp" alt="" className="w-full object-contain" />
         </div>
 
         <CircularGallery
           ref={galleryRef3}
           items={[
-            { image: `/img/candles/Frame 54.png`, text: "" },
-            { image: `/img/candles/Frame 55.png`, text: "" },
-            { image: `/img/candles/Frame 56.png`, text: "" },
-            { image: `/img/candles/Frame 57.png`, text: "" },
-            { image: `/img/candles/Frame 58.png`, text: "" },
+            { image: `/img/candles/Frame 54.webp`, text: "" },
+            { image: `/img/candles/Frame 55.webp`, text: "" },
+            { image: `/img/candles/Frame 56.webp`, text: "" },
+            { image: `/img/candles/Frame 57.webp`, text: "" },
+            { image: `/img/candles/Frame 58.webp`, text: "" },
           ]}
           bend={-3}
           textColor="#660000"
@@ -173,17 +198,17 @@ const PortfolioMobile = () => {
 
         <div className="h-[400px] mt-[-3rem]">
           <div className="pointer-events-none absolute mt-10 left-0 right-0 flex justify-center z-0">
-            <img src="/img/line.png" alt="" className="w-full max-w-[360px] object-contain" />
+            <img src="/img/line.webp" alt="" className="w-full max-w-[360px] object-contain" />
           </div>
           <CircularGallery
           ref={galleryRef4}
             items={[
-            { image: `/img/candles/Frame 45.png`, text: "" },
-            { image: `/img/candles/Frame 46.png`, text: "" },
-            { image: `/img/candles/Frame 47.png`, text: "" },
-            { image: `/img/candles/Frame 48.png`, text: "" },
-            { image: `/img/candles/Frame 49.png`, text: "" }, 
-            { image: `/img/candles/Frame 50.png`, text: "" },
+            { image: `/img/candles/Frame 45.webp`, text: "" },
+            { image: `/img/candles/Frame 46.webp`, text: "" },
+            { image: `/img/candles/Frame 47.webp`, text: "" },
+            { image: `/img/candles/Frame 48.webp`, text: "" },
+            { image: `/img/candles/Frame 49.webp`, text: "" }, 
+            { image: `/img/candles/Frame 50.webp`, text: "" },
           ]}
             bend={-2}
             textColor="#660000"
@@ -207,14 +232,14 @@ const PortfolioMobile = () => {
 
       <div className="h-[400px] mt-[-4rem]">
           <div className="pointer-events-none absolute mt-10 left-0 right-0 flex justify-center z-0">
-            <img src="/img/line.png" alt="" className="w-full max-w-[360px] object-contain" />
+            <img src="/img/line.webp" alt="" className="w-full max-w-[360px] object-contain" />
           </div>
           <CircularGallery
           ref={galleryRef5}
             items={[
-            { image: `/img/candles/Frame 51.png`, text: "" },
-            { image: `/img/candles/Frame 52.png`, text: "" },
-            { image: `/img/candles/Frame 53.png`, text: "" },
+            { image: `/img/candles/Frame 51.webp`, text: "" },
+            { image: `/img/candles/Frame 52.webp`, text: "" },
+            { image: `/img/candles/Frame 53.webp`, text: "" },
           ]}
             bend={-2}
             textColor="#660000"
@@ -245,16 +270,16 @@ const PortfolioMobile = () => {
 
        <div className="h-[400px] mt-[-4rem]">
           <div className="pointer-events-none absolute mt-10 left-0 right-0 flex justify-center z-0">
-            <img src="/img/line.png" alt="" className="w-full max-w-[360px] object-contain" />
+            <img src="/img/line.webp" alt="" className="w-full max-w-[360px] object-contain" />
           </div>
           <CircularGallery
           ref={galleryRef6}
             items={[
-            { image: `/img/candles/Frame 54.png`, text: "" },
-            { image: `/img/candles/Frame 55.png`, text: "" },
-            { image: `/img/candles/Frame 56.png`, text: "" },
-            { image: `/img/candles/Frame 57.png`, text: "" },
-            { image: `/img/candles/Frame 58.png`, text: "" },
+            { image: `/img/candles/Frame 54.webp`, text: "" },
+            { image: `/img/candles/Frame 55.webp`, text: "" },
+            { image: `/img/candles/Frame 56.webp`, text: "" },
+            { image: `/img/candles/Frame 57.webp`, text: "" },
+            { image: `/img/candles/Frame 58.webp`, text: "" },
           ]}
             bend={-2}
             textColor="#660000"

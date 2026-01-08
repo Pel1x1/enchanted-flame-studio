@@ -11,7 +11,7 @@ const HeroSection = () => {
       {/* Центрированное изображение */}
       <div className="absolute inset-0 flex -mt-[7.5rem] items-center justify-center pointer-events-none">
         <img
-          src="/img/Frame 40.png"
+          src="/img/Frame 40.webp"
           alt="LUMĒRE frame"
           className="object-contain max-w-full w-[372px] md:w-[500px] lg:w-[600px] xl:w-[550px] lg:rotate-90"
         />
@@ -24,21 +24,21 @@ const HeroSection = () => {
         <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10">
           <button onClick={scrollToAbout} aria-label="WhatsApp" className="transition-transform hover:scale-110">
             <img
-              src="/img/whatsapp.png"
+              src="/img/whatsapp.webp"
               alt="WhatsApp"
               className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
           </button>
           <button onClick={scrollToAbout} aria-label="Telegram" className="transition-transform hover:scale-110">
             <img
-              src="/img/telegram.png"
+              src="/img/telegram.webp"
               alt="Telegram"
               className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
           </button>
           <button onClick={scrollToAbout} aria-label="Instagram" className="transition-transform hover:scale-110">
             <img
-              src="/img/instagram.png"
+              src="/img/instagram.webp"
               alt="Instagram"
               className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
