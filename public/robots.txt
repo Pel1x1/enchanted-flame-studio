@@ -1,8 +1,17 @@
+# LUMĒRE - Свечи ручной работы
+# https://lumere.online
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -12,3 +21,10 @@ Allow: /
 
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Sitemap
+Sitemap: https://lumere.online/sitemap.xml
+
+# Host
+Host: https://lumere.online

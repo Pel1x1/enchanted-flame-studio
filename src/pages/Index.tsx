@@ -11,9 +11,6 @@ import DeliverySection from '@/components/DeliverySection';
 const Index = () => {
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* SEO */}
-      <title>LUMĒRE — Свечи ручной работы из гипса и кокосового воска | by Ksenia</title>
-      <meta name="description" content="LUMĒRE — уникальные свечи ручной работы из гипса и кокосового воска. Создаём атмосферу уюта и тепла в вашем доме. Ограниченные партии, индивидуальные заказы." />
       
       {/* Fixed Background Elements */}
       <div className="fixed inset-0 z-0">
