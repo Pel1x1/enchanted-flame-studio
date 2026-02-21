@@ -6,23 +6,29 @@ const FloatingLeaves = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Top Left Leaves - facing toward center (right) */}
-      <img
-        src={leaf2}
-        alt=""
-        className="absolute -top-10 -left-16 w-64 md:w-80 opacity-20 animate-float rotate-[30deg]"
-      />
-      <img
-        src={leaf1}
-        alt=""
-        className="absolute top-20 -left-8 w-48 md:w-64 opacity-15 animate-float-delayed rotate-[45deg]"
-      />
+      <div className='absolute -top-10 -left-16 w-64 md:w-80 opacity-20 animate-float'>
+        <img
+          src={leaf2}
+          alt=""
+          className="rotate-[210deg] "
+        />
+      </div>
+      <div className="absolute top-[100px] -left-9 w-48 md:w-64 opacity-15 animate-float-delayed rotate-[45deg]">
+        <img
+          src={leaf1}
+          alt=""
+          className="rotate-[180deg] "
+        />
+      </div>
       
       {/* Top Right Leaves - facing toward center (left), mirrored */}
+      <div className="absolute -top-8 -right-16 w-64 md:w-80 opacity-20 animate-float-slow -scale-x-100 rotate-[-200deg]">
       <img
         src={leaf3}
         alt=""
-        className="absolute -top-8 -right-16 w-64 md:w-80 opacity-20 animate-float-slow -scale-x-100 rotate-[-30deg]"
+        className="rotate-[-40deg]"
       />
+      </div>
       <img
         src={leaf1}
         alt=""
@@ -30,16 +36,20 @@ const FloatingLeaves = () => {
       />
       
       {/* Bottom Left Leaves - facing toward center (right and up) */}
-      <img
-        src={leaf3}
-        alt=""
-        className="absolute -bottom-12 -left-20 w-72 md:w-96 opacity-20 animate-float-delayed rotate-[-30deg]"
-      />
-      <img
-        src={leaf2}
-        alt=""
-        className="absolute bottom-24 -left-8 w-48 md:w-64 opacity-15 animate-float-slow rotate-[60deg]"
-      />
+      <div className="absolute -bottom-12 -left-20 w-72 md:w-96 opacity-20 animate-float-delayed rotate-[-30deg]"> 
+        <img
+          src={leaf3}
+          alt=""
+          className="rotate-[130deg] "
+        />
+      </div>
+      <div className="absolute bottom-[120px] -left-8 w-48 md:w-64 opacity-15 animate-float-slow rotate-[60deg]"> 
+        <img
+          src={leaf2}
+          alt=""
+          className="rotate-[130deg] "
+        />
+      </div>
       
       {/* Bottom Right Leaves - facing toward center (left and up), mirrored */}
       <img
@@ -54,11 +64,13 @@ const FloatingLeaves = () => {
       />
 
       {/* Center Left Accent Leaf - facing right */}
+      <div className="absolute top-1/3 -left-24 w-40 md:w-56 opacity-10 animate-float-slow ">
       <img
         src={leaf2}
         alt=""
-        className="absolute top-1/3 -left-24 w-40 md:w-56 opacity-10 animate-float-slow rotate-[45deg]"
-      />
+        className='rotate-[120deg]'
+        />
+      </div>
       
       {/* Center Right Accent Leaf - facing left, mirrored */}
       <img

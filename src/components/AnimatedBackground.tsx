@@ -8,7 +8,7 @@ const AnimatedBackground = () => {
       
       {/* Subtle Moving Particles */}
       <div className="absolute inset-0">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 60 }).map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary/20 rounded-full animate-float"

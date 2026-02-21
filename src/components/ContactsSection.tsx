@@ -1,13 +1,13 @@
 import { Button } from './ui/button';
 
 const buyLinks = [
-  { name: 'Telegram', href: 'https://t.me/' },
-  { name: 'WhatsApp', href: 'https://wa.me/' },
+  { name: 'Telegram', href: 'https://t.me/kseni_lumere' },
+  { name: 'WhatsApp', href: 'https://wa.me/+79245461011' },
 ];
 
 const watchLinks = [
-  { name: 'Instagram', href: 'https://instagram.com/' },
-  { name: 'Tik Tok', href: 'mailto:lumere@example.com' },
+  { name: 'Instagram', href: 'https://www.instagram.com/kseni_lumere?igsh=M2NvZzlnMWNhM245' },
+  { name: 'Tik Tok', href: 'https://www.tiktok.com/@kseni_lumere?_r=1&_t=ZS-946UIb6ycno' },
 ];
 
 const ContactsSection = () => {
