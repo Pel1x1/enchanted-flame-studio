@@ -14,7 +14,7 @@ const HeroSection = () => {
           <img
             src="/img/Frame 40.webp"
             alt="LUMĒRE frame"
-            className="relative object-contain w-[90vw] max-w-[372px] md:max-w-[500px] lg:max-w-[600px] lg:rotate-90 opacity-80 pointer-events-none z-0"
+            className="relative object-contain w-[90vw] max-w-[372px] md:max-w-[500px] lg:max-w-[600px] lg:rotate-90 pointer-events-none z-0"
           />
 
           {/* Логотип абсолютно центрируется точно поверх картинки */}
